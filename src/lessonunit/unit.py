@@ -1,8 +1,8 @@
-from .constants import validStartTimes, validEndTimes, timePattern
 
+from .constants import validStartTimes, validEndTimes, timePattern
 import re
 
-class LessonUnit(object):
+class Unit(object):
     """
     Create a lesson unit object.
 

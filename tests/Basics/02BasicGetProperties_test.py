@@ -1,12 +1,12 @@
 import unittest
 
-from context import lessonunit
+from context import unit
 
 
 class LessonUnitTests(unittest.TestCase):
 
     def setUp(self):
-        self.unit = lessonunit.LessonUnit()
+        self.unit = unit.Unit()
 
     def testObjectCreatedGetProperies(self):
         self.assertEqual(self.unit.startTime,"")

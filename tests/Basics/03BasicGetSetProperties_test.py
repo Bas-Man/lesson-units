@@ -1,12 +1,12 @@
 import unittest
 
-from context import lessonunit
+from context import unit
 
 
 class LessonUnitTests(unittest.TestCase):
 
     def setUp(self):
-        self.unit = lessonunit.LessonUnit(startTime="08:30",endTime="09:10",
+        self.unit = unit.Unit(startTime="08:30",endTime="09:10",
                                           material="BE3",
                                           type="Private",comment="@Akasaka",
                                           location="Akasaka",count=1)

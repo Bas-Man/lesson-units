@@ -1,11 +1,11 @@
 import unittest
 
-from context import lessonunit
+from context import unit
 
 class LessonUnitTimesTests(unittest.TestCase):
 
     def setUp(self):
-        self.unit = lessonunit.LessonUnit(startTime="7:15",endTime="7:45")
+        self.unit = unit.Unit(startTime="7:15",endTime="7:45")
 
     def testObjectCreatedTimeNotSet(self):
         self.assertEqual(self.unit.startTime,"7:15")
