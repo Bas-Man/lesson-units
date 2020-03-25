@@ -3,7 +3,7 @@ import unittest
 from context import unit
 
 
-class LessonUnitTimesTests(unittest.TestCase):
+class UnitTimesTests(unittest.TestCase):
 
     def setUp(self):
         self.unit = unit.Unit()
