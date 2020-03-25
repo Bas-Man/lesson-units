@@ -13,3 +13,13 @@ class LessonTests(unittest.TestCase):
         self.assertEqual(self.lesson._month,12)
         self.assertEqual(self.lesson._year,2020)
         self.assertTrue(self.lesson._valid)
+
+    def testObjectDateValues(self):
+        self.assertEqual(self.lesson.date,1)
+        self.assertEqual(self.lesson.month,12)
+        self.assertEqual(self.lesson.year,2020)
+
+    def testObjectDateStrings(self):
+        self.assertEqual(self.lesson.dateToStr,"1")
+        self.assertEqual(self.lesson.monthToStr,"12")
+        self.assertEqual(self.lesson.yearToStr,"2020")
