@@ -1,6 +1,6 @@
 import datetime as dt
 import re
-import unit
+from . import unit
 
 class Lessons(object):
     """docstring for Lessons."""
@@ -73,3 +73,13 @@ class Lessons(object):
     @property
     def yearToStr(self):
         return str(self._year)
+
+    @property
+    def numberOfClasses(self):
+        return len(self.classes)
+
+    def appendUnit(self, thisunit):
+        if isinstance(thisunit, unit.Unit):
+            self.classes.append(thisunit)
+        else:
+            raise TypeError("Invalid Object passed")
