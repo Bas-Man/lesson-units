@@ -6,12 +6,13 @@ class Unit(object):
     """
     Create a lesson unit object.
 
-    This will store the information for a given lesson. It will provide details
+    This will store the information for a given Unit. It will provide details
     such as startTime, endTime. The material to be taught.
 
-    Lesson type, private, office, bonus, travel. number of lessons;
-    this will be a single class in the case of student, 2 or more
-    in the case of an instructor.
+    Lesson type, private, office, bonus, travel.
+
+    Number of lessons; this will be a single unit in the case of student,
+    2 or more in the case of an instructor.
 
     Location of the lesson to be given. Any additional comments provided by the
     staff or scheduler.
