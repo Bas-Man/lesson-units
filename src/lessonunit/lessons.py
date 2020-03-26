@@ -9,7 +9,7 @@ class Lessons(object):
         self._date = date
         self._month = month
         self._year = year
-        self.classes = []
+        self.units = []
         self._valid = False
         self._validateDate()
 
@@ -29,10 +29,21 @@ class Lessons(object):
 
     @property
     def date(self):
+        """
+        Return the date of lessons.
+        rtype: Int
+        """
         return self._date
 
     @date.setter
     def date(self, value):
+        """
+        Set the date value.
+        Checks that the input is of type int and raises TypeError if not int
+        Checks that the value is in the range 1 to 31 as a minimum test.
+
+        Raises a valueError is not in range.
+        """
         self._type(value)
         if ((value < 1) or (value > 31)):
             raise ValueError("Not within range 1 ~ 31")
@@ -40,10 +51,21 @@ class Lessons(object):
 
     @property
     def month(self):
+        """
+        Return the month of lessons.
+        rtype: Int
+        """
         return self._month
 
     @month.setter
     def month(self, value):
+        """
+        Set the month value.
+        Checks that the input is of type int and raises TypeError if not int
+        Checks that the value is in the range 1 to 12 as a minimum test.
+
+        Raises a valueError is not in range.
+        """
         self._type(value)
         if ((value < 1) or (value > 12)):
             raise ValueError("Not within range 1 ~ 12")
@@ -51,10 +73,20 @@ class Lessons(object):
 
     @property
     def year(self):
+        """
+        Return the year of lessons.
+        rtype: Int
+        """
         return self._year
 
     @year.setter
     def year(self, value):
+        """
+        Set the year value.
+        Checks that the input is in the string format of four digits
+
+        Raises a valueError if it does not match the four digit string
+        """
         self._type(value)
         pattern = re.compile(r'''\d{4}''')
         match = pattern.match(str(value))
@@ -64,22 +96,38 @@ class Lessons(object):
 
     @property
     def dateToStr(self):
+        """
+        Return date as a str
+        rtype: str
+        """
         return str(self._date)
 
     @property
     def monthToStr(self):
+        """
+        Retrun month as str
+        type: str
+        """
         return str(self._month)
 
     @property
     def yearToStr(self):
+        """
+        Return year as str
+        rtype: str
+        """
         return str(self._year)
 
     @property
-    def numberOfClasses(self):
-        return len(self.classes)
+    def numberOfunits(self):
+        """
+        Return the number of units for the lessons
+        rtype: int
+        """
+        return len(self.units)
 
     def appendUnit(self, thisunit):
         if isinstance(thisunit, unit.Unit):
-            self.classes.append(thisunit)
+            self.units.append(thisunit)
         else:
             raise TypeError("Invalid Object passed")
