@@ -127,6 +127,11 @@ class Lessons(object):
         return len(self.units)
 
     def appendUnit(self, thisunit):
+        """
+        Append unit.Unit object to lessons.Lessons.unit[]
+        Raises a TypeError if object is not of unit.Unit
+        rtype: None
+        """
         if isinstance(thisunit, unit.Unit):
             self.units.append(thisunit)
         else:
