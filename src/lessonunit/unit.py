@@ -28,6 +28,22 @@ class Unit(object):
         self._type = type
         self._count = count
         self._comment = comment
+        self.__validateSelf()
+
+
+    def __validateSelf(self):
+        """
+        Internal function to check that required default values have been set.
+        rtype: None
+        """
+        if self._startTime is None:
+            raise ValueError(
+                            "startTime is None. Must be 'HH:MM'"
+                             )
+        if self._endTime is None:
+            raise ValueError(
+                            "endTime is None. Must be 'HH:MM'"
+                            )
 
     @property
     def startTime(self):
@@ -35,8 +51,6 @@ class Unit(object):
         Return the startTime of the lesson.
         rtype:  str
         '''
-        if self._startTime is None:
-            return ""
         return self._startTime
 
     @property
@@ -45,8 +59,6 @@ class Unit(object):
         Return the endTime of the lesson.
         rtype: str
         '''
-        if self._endTime is None:
-            return ""
         return self._endTime
 
     @property
