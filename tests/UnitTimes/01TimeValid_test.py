@@ -10,4 +10,5 @@ class UnitTimesTests(unittest.TestCase):
     def testObjectCreatedTimeNotSet(self):
         self.assertEqual(self.unit.startTime,"07:00")
         self.assertTrue(self.unit.isStartTimeValid)
+        self.assertEqual(self.unit.endTime,"07:40")
         self.assertTrue(self.unit.isEndTimeValid)
