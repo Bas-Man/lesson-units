@@ -22,4 +22,4 @@ class UnitTests(unittest.TestCase):
         self.assertIsNone(self.obj._comment)
         self.assertIsNone(self.obj._location)
         self.assertIsNone(self.obj._material)
-        self.assertIs(self.obj._count,0)
+        self.assertIs(self.obj._count,1)

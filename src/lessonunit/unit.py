@@ -20,7 +20,7 @@ class Unit(object):
 
     def __init__(self, startTime=None, endTime=None,
                  location=None, material=None,
-                 type=None, count=0, comment=None):
+                 type=None, count=1, comment=None):
         self._startTime = startTime
         self._endTime = endTime
         self._location = location
@@ -124,9 +124,6 @@ class Unit(object):
         Raise a ValueError if the format is not valid
         rtype: boolean
         '''
-        if self.startTime is None:
-            return False
-
         pattern = re.compile(timePattern)
         match = pattern.match(self._startTime)
         if not match:
@@ -144,9 +141,6 @@ class Unit(object):
         Raise a ValueError if the format is not valid
         rtype: boolean
         '''
-        if self.endTime is None:
-            return False
-
         pattern = re.compile(timePattern)
         match = pattern.match(self._endTime)
         if not match:

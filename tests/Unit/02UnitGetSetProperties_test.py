@@ -9,7 +9,7 @@ class UnitTests(unittest.TestCase):
         self.unit = unit.Unit(startTime="08:30",endTime="09:10",
                                           material="BE3",
                                           type="Private",comment="@Akasaka",
-                                          location="Akasaka",count=1)
+                                          location="Akasaka",count=2)
 
     def testObjectCreatedGetSetProperies(self):
         self.assertEqual(self.unit.startTime,"08:30")
@@ -18,5 +18,5 @@ class UnitTests(unittest.TestCase):
         self.assertEqual(self.unit.type,"Private")
         self.assertEqual(self.unit.comment,"@Akasaka")
         self.assertEqual(self.unit.location,"Akasaka")
-        self.assertEqual(self.unit.count,1)
-        self.assertEqual(self.unit.countToStr,"1")
+        self.assertEqual(self.unit.count,2)
+        self.assertEqual(self.unit.countToStr,"2")

@@ -15,5 +15,5 @@ class UnitTests(unittest.TestCase):
         self.assertEqual(self.unit.type,"")
         self.assertEqual(self.unit.comment,"")
         self.assertEqual(self.unit.location,"")
-        self.assertEqual(self.unit.count,0)
-        self.assertEqual(self.unit.countToStr,"0")
+        self.assertEqual(self.unit.count,1)
+        self.assertEqual(self.unit.countToStr,"1")
