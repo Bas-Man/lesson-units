@@ -11,9 +11,9 @@ class Lessons(object):
         self._year = year
         self.units = []
         self._valid = False
-        self._validateDate()
+        self.__validateDate()
 
-    def _validateDate(self):
+    def __validateDate(self):
         if ((self._date is None) or (self._month is None) or
             (self._year is None)):
             raise ValueError("Invalid date provided")
@@ -23,7 +23,7 @@ class Lessons(object):
         except ValueError as e:
             print(e)
 
-    def _type(self, value):
+    def __type(self, value):
         if type(value) is not int:
             raise TypeError("Not Integer")
 
@@ -44,7 +44,7 @@ class Lessons(object):
 
         Raises a valueError is not in range.
         """
-        self._type(value)
+        self.__type(value)
         if ((value < 1) or (value > 31)):
             raise ValueError("Not within range 1 ~ 31")
         self._date = value
@@ -66,7 +66,7 @@ class Lessons(object):
 
         Raises a valueError is not in range.
         """
-        self._type(value)
+        self.__type(value)
         if ((value < 1) or (value > 12)):
             raise ValueError("Not within range 1 ~ 12")
         self._month = value
@@ -87,7 +87,7 @@ class Lessons(object):
 
         Raises a valueError if it does not match the four digit string
         """
-        self._type(value)
+        self.__type(value)
         pattern = re.compile(r'''\d{4}''')
         match = pattern.match(str(value))
         if not match:
