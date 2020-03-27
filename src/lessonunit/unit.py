@@ -130,7 +130,7 @@ class Unit(object):
         pattern = re.compile(timePattern)
         match = pattern.match(self._startTime)
         if not match:
-            raise ValueError("Format Error startTime does not conform to xx:xx")
+            raise ValueError("Format Error startTime does not conform to HH:MM")
 
         if self.startTime in validStartTimes:
             return True
@@ -150,7 +150,7 @@ class Unit(object):
         pattern = re.compile(timePattern)
         match = pattern.match(self._endTime)
         if not match:
-            raise ValueError("Format Error endTime does not conform to xx:xx")
+            raise ValueError("Format Error endTime does not conform to HH:MM")
 
         if self.endTime in validEndTimes:
             return True
