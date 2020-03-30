@@ -5,7 +5,7 @@ from . import unit
 class Lessons(object):
     """docstring for Lessons."""
 
-    def __init__(self,date=None,month=None,year=None):
+    def __init__(self,date=None,month=None,year=None) -> None:
         self._date = date
         self._month = month
         self._year = year
@@ -13,7 +13,7 @@ class Lessons(object):
         self._valid = False
         self.__validateDate()
 
-    def __validateDate(self):
+    def __validateDate(self) -> None:
         if ((self._date is None) or (self._month is None) or
             (self._year is None)):
             raise ValueError("Invalid date provided")
@@ -23,12 +23,12 @@ class Lessons(object):
         except ValueError as e:
             print(e)
 
-    def __type(self, value):
+    def __type(self, value) -> None:
         if type(value) is not int:
             raise TypeError("Not Integer")
 
     @property
-    def date(self):
+    def date(self) -> int:
         """
         Return the date of lessons.
         rtype: Int
@@ -36,7 +36,7 @@ class Lessons(object):
         return self._date
 
     @date.setter
-    def date(self, value):
+    def date(self, value) -> None:
         """
         Set the date value.
         Checks that the input is of type int and raises TypeError if not int
@@ -50,7 +50,7 @@ class Lessons(object):
         self._date = value
 
     @property
-    def month(self):
+    def month(self) -> int:
         """
         Return the month of lessons.
         rtype: Int
@@ -58,7 +58,7 @@ class Lessons(object):
         return self._month
 
     @month.setter
-    def month(self, value):
+    def month(self, value) -> None:
         """
         Set the month value.
         Checks that the input is of type int and raises TypeError if not int
@@ -72,7 +72,7 @@ class Lessons(object):
         self._month = value
 
     @property
-    def year(self):
+    def year(self) -> int:
         """
         Return the year of lessons.
         rtype: Int
@@ -80,7 +80,7 @@ class Lessons(object):
         return self._year
 
     @year.setter
-    def year(self, value):
+    def year(self, value) -> None:
         """
         Set the year value.
         Checks that the input is in the string format of four digits
@@ -95,7 +95,7 @@ class Lessons(object):
         self._year = value
 
     @property
-    def dateToStr(self):
+    def dateToStr(self) -> str:
         """
         Return date as a str
         rtype: str
@@ -103,7 +103,7 @@ class Lessons(object):
         return str(self._date)
 
     @property
-    def monthToStr(self):
+    def monthToStr(self) -> str:
         """
         Retrun month as str
         type: str
@@ -111,7 +111,7 @@ class Lessons(object):
         return str(self._month)
 
     @property
-    def yearToStr(self):
+    def yearToStr(self) -> str:
         """
         Return year as str
         rtype: str
@@ -119,14 +119,14 @@ class Lessons(object):
         return str(self._year)
 
     @property
-    def numberOfunits(self):
+    def numberOfunits(self) -> int:
         """
         Return the number of units for the lessons
         rtype: int
         """
         return len(self.units)
 
-    def appendUnit(self, thisunit):
+    def appendUnit(self, thisunit) -> None:
         """
         Append unit.Unit object to lessons.Lessons.unit[]
         Raises a TypeError if object is not of unit.Unit
