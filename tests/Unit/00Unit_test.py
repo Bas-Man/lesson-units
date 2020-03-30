@@ -19,13 +19,13 @@ class UnitTests(unittest.TestCase):
         with self.assertRaises(ValueError) as e:
             self.obj = unit.Unit(startTime="3:00")
         self.assertEqual(str(e.exception),
-                         "Format Error startTime does not conform to HH:MM")
+                         "Format Error startTime does not conform to 'HH:MM'")
 
     def testObjectEndTimeIsNotStr(self):
         with self.assertRaises(ValueError) as e:
             self.obj = unit.Unit(startTime="07:00", endTime="7:40")
         self.assertEqual(str(e.exception),
-                         "Format Error endTime does not conform to HH:MM")
+                         "Format Error endTime does not conform to 'HH:MM'")
 
     def testObectTypeNoneCountIsZero(self):
         self.obj = unit.Unit(startTime="07:00", endTime="07:40")

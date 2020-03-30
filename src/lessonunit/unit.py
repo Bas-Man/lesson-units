@@ -30,6 +30,21 @@ class Unit(object):
         self._comment = comment
         self.__startTimeIsValid()
         self.__endTimeIsValid()
+        self.__countIsValid()
+
+    def __countIsValid(self):
+        """
+        Raise ValueErrorif count equals Zero
+        rtype: None
+        """
+        if self._count <= 0:
+            raise ValueError("Count is not one or higher. Not a valid value.")
+
+        # TODO: Add index range to speed up index() check
+        timeUnitDiff = ((validEndTimes.index(self._endTime) -
+            validStartTimes.index(self._startTime)) + 1)
+        if timeUnitDiff != self._count:
+                raise ValueError("Time difference does not match count")
 
     def __startTimeIsValid(self):
         """
@@ -43,7 +58,7 @@ class Unit(object):
             match = pattern.match(self._startTime)
             if not match:
                 raise ValueError(
-                    "Format Error startTime does not conform to HH:MM")
+                    "Format Error startTime does not conform to 'HH:MM'")
         if self._startTime not in validStartTimes:
             raise ValueError("Invalid Start Time provided")
 
@@ -62,7 +77,7 @@ class Unit(object):
             pattern = re.compile(timePattern)
             match = pattern.match(self._endTime)
             if not match:
-                raise ValueError("Format Error endTime does not conform to HH:MM")
+                raise ValueError("Format Error endTime does not conform to 'HH:MM'")
         if self._endTime not in validEndTimes:
             raise ValueError("Invalid End Time provided")
 
