@@ -21,3 +21,7 @@ class UnitTests(unittest.TestCase):
                                               type="Private",comment="@Akasaka",
                                               location="Akasaka",count=1)
         self.assertEqual(str(e.exception),"Time difference does not match count")
+
+    def testObjectCountisValid(self):
+        self.unit = unit.Unit(startTime="10:00", endTime="12:55",count=4)
+        self.assertEqual(self.unit.count,4)

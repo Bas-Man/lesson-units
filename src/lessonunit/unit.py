@@ -34,7 +34,8 @@ class Unit(object):
 
     def __countIsValid(self):
         """
-        Raise ValueErrorif count equals Zero
+        Raise ValueError if count equals Zero or count does not match time
+        difference
         rtype: None
         """
         if self._count <= 0:
