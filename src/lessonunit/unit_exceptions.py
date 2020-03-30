@@ -10,3 +10,8 @@ class UnitCountValueInvalidError(UnitExceptions):
     """UnitCountValueInvalid."""
     def __init__(self, msg="UnitCountValueInvalidError occured"):
         super().__init__(msg)
+
+class UnitTimeCountValueMismatchError(UnitExceptions):
+    """docstring for UnitTimeCountValueMismatchError.UnitException"""
+    def __init__(self, msg="Time difference does not match count"):
+        super().__init__(msg)

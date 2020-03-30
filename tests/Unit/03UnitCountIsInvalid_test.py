@@ -17,7 +17,8 @@ class UnitTests(unittest.TestCase):
                         "Count is not one or higher. Not a valid value.")
 
     def testObjectCountRaisesValueError(self):
-        with self.assertRaises(ValueError) as e:
+        with self.assertRaises(
+                unit_exceptions.UnitTimeCountValueMismatchError) as e:
             self.unit = unit.Unit(startTime="08:30",endTime="09:55",
                                               material="BE3",
                                               type="Private",comment="@Akasaka",

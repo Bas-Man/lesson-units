@@ -47,7 +47,8 @@ class Unit(object):
         timeUnitDiff = ((validEndTimes.index(self._endTime) -
             validStartTimes.index(self._startTime)) + 1)
         if timeUnitDiff != self._count:
-                raise ValueError("Time difference does not match count")
+                raise unit_exceptions.UnitTimeCountValueMismatchError(
+                    "Time difference does not match count")
 
     def __startTimeIsValid(self):
         """
