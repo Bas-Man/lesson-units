@@ -1,5 +1,6 @@
 
 from .constants import validStartTimes, validEndTimes, timePattern
+from . import unit_exceptions
 import re
 
 class Unit(object):
@@ -39,7 +40,8 @@ class Unit(object):
         rtype: None
         """
         if self._count <= 0:
-            raise ValueError("Count is not one or higher. Not a valid value.")
+            raise unit_exceptions.UnitCountValueInvalidError(
+                "Count is not one or higher. Not a valid value.")
 
         # TODO: Add index range to speed up index() check
         timeUnitDiff = ((validEndTimes.index(self._endTime) -

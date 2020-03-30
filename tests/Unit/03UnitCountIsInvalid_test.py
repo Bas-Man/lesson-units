@@ -1,12 +1,14 @@
 import unittest
 
 from context import unit
+from context import unit_exceptions
 
 
 class UnitTests(unittest.TestCase):
 
     def testObjectCountIsZeroOrLower(self):
-        with self.assertRaises(ValueError) as e:
+        with self.assertRaises(
+            unit_exceptions.UnitCountValueInvalidError) as e:
             self.unit = unit.Unit(startTime="08:30",endTime="09:10",
                                               material="BE3",
                                               type="Private",comment="@Akasaka",
