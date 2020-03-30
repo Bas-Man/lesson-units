@@ -1,14 +1,14 @@
 import unittest
 
 from context import unit
-from context import unit_exceptions
+from context import unit_exceptions as UnitExcpt
 
 
 class UnitTests(unittest.TestCase):
 
     def testObjectCountIsZeroOrLower(self):
         with self.assertRaises(
-            unit_exceptions.UnitCountValueInvalidError) as e:
+            UnitExcpt.UnitCountValueInvalidError) as e:
             self.unit = unit.Unit(startTime="08:30",endTime="09:10",
                                               material="BE3",
                                               type="Private",comment="@Akasaka",
@@ -18,12 +18,13 @@ class UnitTests(unittest.TestCase):
 
     def testObjectCountRaisesValueError(self):
         with self.assertRaises(
-                unit_exceptions.UnitTimeCountValueMismatchError) as e:
+                UnitExcpt.UnitTimeCountValueMismatchError) as e:
             self.unit = unit.Unit(startTime="08:30",endTime="09:55",
                                               material="BE3",
                                               type="Private",comment="@Akasaka",
                                               location="Akasaka",count=1)
-        self.assertEqual(str(e.exception),"Time difference does not match count")
+        self.assertEqual(str(e.exception),
+                         "Time difference does not match count")
 
     def testObjectCountisValid(self):
         self.unit = unit.Unit(startTime="10:00", endTime="12:55",count=4)

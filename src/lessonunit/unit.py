@@ -1,6 +1,6 @@
 
 from .constants import validStartTimes, validEndTimes, timePattern
-from . import unit_exceptions
+from . import unit_exceptions as UnitExcpt
 import re
 
 class Unit(object):
@@ -40,14 +40,14 @@ class Unit(object):
         rtype: None
         """
         if self._count <= 0:
-            raise unit_exceptions.UnitCountValueInvalidError(
+            raise UnitExcpt.UnitCountValueInvalidError(
                 "Count is not one or higher. Not a valid value.")
 
         # TODO: Add index range to speed up index() check
         timeUnitDiff = ((validEndTimes.index(self._endTime) -
             validStartTimes.index(self._startTime)) + 1)
         if timeUnitDiff != self._count:
-                raise unit_exceptions.UnitTimeCountValueMismatchError(
+                raise UnitExcpt.UnitTimeCountValueMismatchError(
                     "Time difference does not match count")
 
     def __startTimeIsValid(self) -> None:
@@ -81,7 +81,8 @@ class Unit(object):
             pattern = re.compile(timePattern)
             match = pattern.match(self._endTime)
             if not match:
-                raise ValueError("Format Error endTime does not conform to 'HH:MM'")
+                raise ValueError(
+                    "Format Error endTime does not conform to 'HH:MM'")
         if self._endTime not in validEndTimes:
             raise ValueError("Invalid End Time provided")
 
