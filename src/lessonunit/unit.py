@@ -21,7 +21,7 @@ class Unit(object):
 
     def __init__(self, startTime=None, endTime=None,
                  location=None, material=None,
-                 type=None, count=1, comment=None):
+                 type=None, count=1, comment=None) -> None:
         self._startTime = startTime
         self._endTime = endTime
         self._location = location
@@ -33,7 +33,7 @@ class Unit(object):
         self.__endTimeIsValid()
         self.__countIsValid()
 
-    def __countIsValid(self):
+    def __countIsValid(self) -> None:
         """
         Raise ValueError if count equals Zero or count does not match time
         difference
@@ -50,7 +50,7 @@ class Unit(object):
                 raise unit_exceptions.UnitTimeCountValueMismatchError(
                     "Time difference does not match count")
 
-    def __startTimeIsValid(self):
+    def __startTimeIsValid(self) -> None:
         """
         Raise a ValueError if the format is not valid
         rtype: None
@@ -67,7 +67,7 @@ class Unit(object):
             raise ValueError("Invalid Start Time provided")
 
 
-    def __endTimeIsValid(self):
+    def __endTimeIsValid(self) -> None:
         """
         Return true or false if the endTime is valid.
         Raise a ValueError if the format is not valid
@@ -86,7 +86,7 @@ class Unit(object):
             raise ValueError("Invalid End Time provided")
 
     @property
-    def startTime(self):
+    def startTime(self) -> str:
         """
         Return the startTime of the lesson.
         rtype:  str
@@ -94,7 +94,7 @@ class Unit(object):
         return self._startTime
 
     @property
-    def endTime(self):
+    def endTime(self) -> str:
         """
         Return the endTime of the lesson.
         rtype: str
@@ -102,7 +102,7 @@ class Unit(object):
         return self._endTime
 
     @property
-    def material(self):
+    def material(self) -> str:
         """
         Return the type of class material.
         rtype: str
@@ -112,7 +112,7 @@ class Unit(object):
         return self._material
 
     @property
-    def type(self):
+    def type(self) ->str:
         """
         Return the lesson type.
         rtype: str
@@ -122,7 +122,7 @@ class Unit(object):
         return self._type
 
     @property
-    def comment(self):
+    def comment(self) -> str:
         """
         Return any comments attached to the lesson.
         rtype: str
@@ -132,7 +132,7 @@ class Unit(object):
         return self._comment
 
     @property
-    def location(self):
+    def location(self) -> str:
         """
         Return the location of the lesson.
         rtype: str
@@ -142,7 +142,7 @@ class Unit(object):
         return self._location
 
     @property
-    def count(self):
+    def count(self) -> int:
         """
         Return the number of Units for the lesson as a number
         rtype: int
@@ -150,7 +150,7 @@ class Unit(object):
         return self._count
 
     @property
-    def countToStr(self):
+    def countToStr(self) -> str:
         """
         Return the number of Units for the lesson as a string.
         rtype: str
