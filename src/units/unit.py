@@ -1,6 +1,6 @@
 
 from .constants import validStartTimes, validEndTimes, timePattern
-from . import unit_exceptions as UnitExcpt
+from . import exceptions as UnitExcpt
 import re
 
 class Unit(object):
@@ -66,6 +66,11 @@ class Unit(object):
         if self._startTime not in validStartTimes:
             raise ValueError("Invalid Start Time provided")
 
+        # startTime is valid. Split and create attributes for use with
+        # a calendar Event object
+        hour, minute = self._startTime.split(':')
+        self._startHour = hour
+        self._startMinute = minute
 
     def __endTimeIsValid(self) -> None:
         """
@@ -86,6 +91,12 @@ class Unit(object):
         if self._endTime not in validEndTimes:
             raise ValueError("Invalid End Time provided")
 
+        # endTime is valid. Split and create attributes for use with
+        # a calendar Event object
+        hour, minute = self._endTime.split(':')
+        self._endHour = hour
+        self._endMinute = minute
+
     @property
     def startTime(self) -> str:
         """
@@ -95,12 +106,44 @@ class Unit(object):
         return self._startTime
 
     @property
+    def startHour(self) -> int:
+        """
+        Return the startHour used with icalendar.Event object.
+        rtype: str
+        """
+        return int(self._startHour)
+
+    @property
+    def startMinute(self) -> int:
+        """
+        Return the startMinute used with icalendar.Event object.
+        rtype: str
+        """
+        return int(self._startMinute)
+
+    @property
     def endTime(self) -> str:
         """
         Return the endTime of the lesson.
         rtype: str
         """
         return self._endTime
+
+    @property
+    def endHour(self) -> int:
+        """
+        Return the endHour used with icalendar.Event object.
+        rtype: str
+        """
+        return int(self._endHour)
+
+    @property
+    def endMinute(self) -> int:
+        """
+        Return the endMinute used with icalendar.Event object.
+        rtype: str
+        """
+        return int(self._endMinute)
 
     @property
     def material(self) -> str:
