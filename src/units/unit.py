@@ -254,7 +254,7 @@ class Unit(object):
     @property
     def endTimeForEvent(self) -> UnitTime:
         """
-        Return a UnitTime object containg endTime information for use with
+        Return a UnitTime object containing endTime information for use with
         icalendar.Event.add
         rtype: UnitTime(object)
         """

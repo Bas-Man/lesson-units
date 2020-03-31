@@ -1,3 +1,5 @@
+# Custom Exceptions for more detailed and specific Errors
+
 class UnitExceptions(Exception):
     """Base Class exceptions for Unit."""
     def __init__(self, msg):

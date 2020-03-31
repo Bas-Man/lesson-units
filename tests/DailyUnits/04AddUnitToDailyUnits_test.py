@@ -14,7 +14,7 @@ class LessonTests(unittest.TestCase):
         self.assertEqual(self.lesson.year,2020)
         self.assertEqual(self.unit.startTime,"07:00")
         self.assertTrue(isinstance(self.unit,unit.Unit))
-        self.assertEqual(self.lesson.numberOfunits,0)
+        self.assertEqual(self.lesson.numberOfUnits,0)
 
     def testappendInvalidObject(self):
         with self.assertRaises(TypeError) as e:
@@ -23,5 +23,5 @@ class LessonTests(unittest.TestCase):
 
     def testAppendUnitToLesson(self):
         self.lesson.appendUnit(self.unit)
-        self.assertEqual(self.lesson.numberOfunits,1)
+        self.assertEqual(self.lesson.numberOfUnits,1)
         self.assertEqual(self.lesson.units[0].startTime,"07:00")
