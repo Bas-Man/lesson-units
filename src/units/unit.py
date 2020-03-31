@@ -6,7 +6,7 @@ import re
 class UnitTime(object):
     """docstring for UnitTime."""
 
-    def __init__(self,hour,minute) -> None:
+    def __init__(self,hour=None,minute=None) -> None:
         self._hour = hour
         self._minute = minute
         if self._hour is None:
