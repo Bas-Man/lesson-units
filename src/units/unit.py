@@ -3,6 +3,29 @@ from .constants import validStartTimes, validEndTimes, timePattern
 from . import exceptions as UnitExcpt
 import re
 
+class UnitTime(object):
+    """docstring for UnitTime."""
+
+    def __init__(self,hour,minute) -> None:
+        self._hour = hour
+        self._minute = minute
+        if self._hour is None:
+            raise ValueError("No Hour set.")
+        if self._minute is None:
+            raise ValueError("No Minute set.")
+
+    @property
+    def hour(self) -> int:
+        """
+        """
+        return self._hour
+
+    @property
+    def minute(self) -> int:
+        """
+        """
+        return self._minute
+        
 class Unit(object):
     """
     Create a lesson unit object.
@@ -201,13 +224,16 @@ class Unit(object):
         """
         return str(self._count)
 
-class UnitTime(object):
-    """docstring for UnitTime."""
+    @property
+    def starTimeForEvent(self) -> UnitTime:
+        """
+        """
+        obj = UnitTime(self.startHour,self.startMinute)
+        return obj
 
-    def __init__(self,hour,minute) -> None:
-        self._hour = hour
-        self._minute = minute
-        if self._hour is None:
-            raise ValueError("No Hour set.")
-        if self._minutes is None:
-            raise ValueError("No Minute set.")
+    @property
+    def endTimeForEvent(self) -> UnitTime:
+        """
+        """
+        obj = UnitTime(self.endHour,self.endMinute)
+        return obj
