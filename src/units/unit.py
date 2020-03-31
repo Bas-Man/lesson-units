@@ -38,7 +38,7 @@ class UnitTime(object):
         This is to be used with the icalendar.Event object
 
         See hour for usage
-        
+
         rtype: int
         """
         return self._minute
@@ -244,6 +244,9 @@ class Unit(object):
     @property
     def startTimeForEvent(self) -> UnitTime:
         """
+        Return a UnitTime object containing startTime inforamtion for use with
+        icalendar.Event.add
+        rtype: UnitTime(object)
         """
         obj = UnitTime(self.startHour,self.startMinute)
         return obj
@@ -251,6 +254,9 @@ class Unit(object):
     @property
     def endTimeForEvent(self) -> UnitTime:
         """
+        Return a UnitTime object containg endTime information for use with
+        icalendar.Event.add
+        rtype: UnitTime(object)
         """
         obj = UnitTime(self.endHour,self.endMinute)
         return obj
