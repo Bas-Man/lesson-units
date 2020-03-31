@@ -200,3 +200,14 @@ class Unit(object):
         rtype: str
         """
         return str(self._count)
+
+class UnitTime(object):
+    """docstring for UnitTime."""
+
+    def __init__(self,hour,minute) -> None:
+        self._hour = hour
+        self._minute = minute
+        if self._hour is None:
+            raise ValueError("No Hour set.")
+        if self._minutes is None:
+            raise ValueError("No Minute set.")
