@@ -17,12 +17,29 @@ class UnitTime(object):
     @property
     def hour(self) -> int:
         """
+        Return the hour portion of unit Time.
+        This is to be used with the icalendar.Event object
+
+        Code example:
+        obj = unit.Unit(startTime="HH:MM",endTime="HH:MM",count=x)
+        eventstartTime = obj.startTimeForEvent
+        eventendTime = obj.endTimeForEvent
+        eventstartTime.hour
+        eventstartTime.minute
+
+        rtype: int
         """
         return self._hour
 
     @property
     def minute(self) -> int:
         """
+        Return the minute portion of unit Time.
+        This is to be used with the icalendar.Event object
+
+        See hour for usage
+        
+        rtype: int
         """
         return self._minute
 
