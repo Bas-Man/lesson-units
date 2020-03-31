@@ -1,12 +1,12 @@
 import unittest
 
-from context import lessons
+from context import dailyunits
 
 
 class LessonTests(unittest.TestCase):
 
     def setUp(self):
-        self.lesson = lessons.Lessons(year=2020,month=13,date=1)
+        self.lesson = dailyunits.DailyUnits(year=2020,month=13,date=1)
 
     def testObjectCreated(self):
         self.assertEqual(self.lesson._date,1)

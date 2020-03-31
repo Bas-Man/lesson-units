@@ -2,7 +2,7 @@ import datetime as dt
 import re
 from . import unit
 
-class Lessons(object):
+class DailyUnits(object):
     """docstring for Lessons."""
 
     def __init__(self,date=None,month=None,year=None) -> None:
