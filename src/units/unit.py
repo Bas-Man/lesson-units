@@ -25,7 +25,7 @@ class UnitTime(object):
         """
         """
         return self._minute
-        
+
 class Unit(object):
     """
     Create a lesson unit object.
@@ -225,7 +225,7 @@ class Unit(object):
         return str(self._count)
 
     @property
-    def starTimeForEvent(self) -> UnitTime:
+    def startTimeForEvent(self) -> UnitTime:
         """
         """
         obj = UnitTime(self.startHour,self.startMinute)
