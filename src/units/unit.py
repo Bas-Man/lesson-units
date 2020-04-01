@@ -69,6 +69,7 @@ class Unit(object):
         self._type = type
         self._count = count
         self._comment = comment
+        # TODO: Decide how to handle bonus units
         self.__startTimeIsValid()
         self.__endTimeIsValid()
         self.__countIsValid()
