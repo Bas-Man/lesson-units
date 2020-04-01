@@ -43,6 +43,8 @@ class UnitTime(object):
         """
         return self._minute
 
+    # TODO: Consider making a base class Unit with minimal required
+    # attributes and then create subclass objects for students and instructors
 class Unit(object):
     """
     Create a lesson unit object.
