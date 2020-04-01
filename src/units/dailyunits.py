@@ -25,7 +25,7 @@ class DailyUnits(object):
         """
         if ((self._date is None) or (self._month is None) or
             (self._year is None)):
-            raise ValueError("Invalid date provided")
+            raise ValueError("date, month or year not set.")
         try:
             # Attempt to create a valid datetime object using passed params
             dt.date(year=self._year,month=self._month,day=self._date)

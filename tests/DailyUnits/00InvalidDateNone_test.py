@@ -8,4 +8,4 @@ class DailyUnitsTests(unittest.TestCase):
     def testObjectCreated(self):
         with self.assertRaises(ValueError) as e:
             self.unit = dailyunits.DailyUnits()
-        self.assertEqual(str(e.exception),"Invalid date provided")
+        self.assertEqual(str(e.exception),"date, month or year not set.")
