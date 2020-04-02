@@ -1,7 +1,7 @@
 import unittest
 
-from context import unit
 from context import exceptions as UnitExcpt
+from context import unit
 
 
 class UnitTests(unittest.TestCase):
