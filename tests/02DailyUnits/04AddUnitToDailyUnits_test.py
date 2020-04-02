@@ -8,8 +8,8 @@ class LessonTests(unittest.TestCase):
 
     def setUp(self):
         self.lesson = dailyunits.DailyUnits(year=2020,month=12 ,date=1)
-        self.unit = unit.Unit(startTime="07:00",endTime="07:40",count=1)
-        self.unit2 = unit.Unit(startTime="10:00",endTime="11:25",count=2)
+        self.unit = unit.Unit(startTime="07:00",endTime="07:40")
+        self.unit2 = unit.Unit(startTime="10:00",endTime="11:25")
 
     def testObjectsCreated(self):
         self.assertEqual(self.lesson.year,2020)

@@ -23,13 +23,13 @@ class Unit(object):
 
     def __init__(self, startTime=None, endTime=None,
                  location=None, material=None,
-                 type=None, count=1, comment=None) -> None:
+                 type=None,  comment=None) -> None:
         self._startTime = startTime
         self._endTime = endTime
         self._location = location
         self._material = material
         self._type = type
-        self._count = count
+        self._count = 0
         self._comment = comment
         # TODO: Decide how to handle bonus units
         self.__startTimeIsValid()
@@ -42,16 +42,14 @@ class Unit(object):
         difference
         rtype: None
         """
-        if self._count <= 0:
-            raise UnitExcpt.UnitCountValueInvalidError(
-                "Count is not one or higher. Not a valid value.")
-
         # TODO: Add index range to speed up index() check
-        timeUnitDiff = ((validEndTimes.index(self._endTime) -
+        UnitCount = ((validEndTimes.index(self._endTime) -
             validStartTimes.index(self._startTime)) + 1)
-        if timeUnitDiff != self._count:
+        if UnitCount <= self._count:
                 raise UnitExcpt.UnitTimeCountValueMismatchError(
                     "Time difference does not match count")
+        else:
+            self._count = UnitCount
 
     def __startTimeIsValid(self) -> None:
         """
