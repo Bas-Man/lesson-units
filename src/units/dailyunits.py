@@ -5,13 +5,20 @@ from . import unit
 # Possble Name Change to unitsondate
 
 class DailyUnits(object):
-    """docstring for DailyUnits."""
+    """DailyUnits object will contain a list of units which take place on
+    this day.
+
+    This will provate year,month, date and then a list of units with their
+    startTime and endTime
+
+    """
 
     def __init__(self,date=None,month=None,year=None) -> None:
         self._date = date
         self._month = month
         self._year = year
-        self.units = []
+        self._units = []
+        self._numOfUnits = 0
         # _valid currently unused.
         self._valid = False
         self.__validateDate()
@@ -141,7 +148,9 @@ class DailyUnits(object):
         Return the number of units for the day
         rtype: int
         """
-        return len(self.units)
+        # TODO: This needs to be recoded. The logic is wrong.
+        # This should iterate over list accessing unit.count summing
+        return self._numOfUnits
 
     def appendUnit(self, thisunit) -> None:
         """
@@ -150,6 +159,7 @@ class DailyUnits(object):
         rtype: None
         """
         if isinstance(thisunit, unit.Unit):
-            self.units.append(thisunit)
+            self._units.append(thisunit)
+            self._numOfUnits += thisunit.count
         else:
             raise TypeError("Invalid Object passed")
