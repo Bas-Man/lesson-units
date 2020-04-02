@@ -12,6 +12,7 @@ class DailyUnits(object):
         self._month = month
         self._year = year
         self.units = []
+        # _valid currently unused.
         self._valid = False
         self.__validateDate()
 
