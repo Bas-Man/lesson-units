@@ -3,46 +3,6 @@ from .constants import validStartTimes, validEndTimes, timePattern
 from . import exceptions as UnitExcpt
 import re
 
-class UnitTime(object):
-    """docstring for UnitTime."""
-
-    def __init__(self,hour=None,minute=None) -> None:
-        self._hour = hour
-        self._minute = minute
-        if self._hour is None:
-            raise ValueError("No Hour set.")
-        if self._minute is None:
-            raise ValueError("No Minute set.")
-
-    @property
-    def hour(self) -> int:
-        """
-        Return the hour portion of unit Time.
-        This is to be used with the icalendar.Event object
-
-        Code example:
-        obj = unit.Unit(startTime="HH:MM",endTime="HH:MM",count=x)
-        eventstartTime = obj.startTimeForEvent
-        eventendTime = obj.endTimeForEvent
-        eventstartTime.hour
-        eventstartTime.minute
-
-        rtype: int
-        """
-        return self._hour
-
-    @property
-    def minute(self) -> int:
-        """
-        Return the minute portion of unit Time.
-        This is to be used with the icalendar.Event object
-
-        See hour for usage
-
-        rtype: int
-        """
-        return self._minute
-
     # TODO: Consider making a base class Unit with minimal required
     # attributes and then create subclass objects for students and instructors
 class Unit(object):
@@ -243,23 +203,3 @@ class Unit(object):
         rtype: str
         """
         return str(self._count)
-
-    @property
-    def startTimeForEvent(self) -> UnitTime:
-        """
-        Return a UnitTime object containing startTime inforamtion for use with
-        icalendar.Event.add
-        rtype: UnitTime(object)
-        """
-        obj = UnitTime(self.startHour,self.startMinute)
-        return obj
-
-    @property
-    def endTimeForEvent(self) -> UnitTime:
-        """
-        Return a UnitTime object containing endTime information for use with
-        icalendar.Event.add
-        rtype: UnitTime(object)
-        """
-        obj = UnitTime(self.endHour,self.endMinute)
-        return obj
