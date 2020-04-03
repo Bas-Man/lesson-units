@@ -13,10 +13,10 @@ class DailyUnits(object):
 
     """
 
-    def __init__(self,date=None,month=None,year=None) -> None:
-        self._date = date
-        self._month = month
+    def __init__(self,year=None,month=None,date=None) -> None:
         self._year = year
+        self._month = month
+        self._date = date
         self._units = []
         self._numOfUnits = 0
         # _valid currently unused.
@@ -154,7 +154,7 @@ class DailyUnits(object):
 
     def appendUnit(self, thisunit) -> None:
         """
-        Append unit.Unit object to x.units[]
+        Append unit.Unit object to DailyUnits.units[]
         Raises a TypeError if object is not an instance of unit.Unit
         rtype: None
         """
