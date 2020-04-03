@@ -8,12 +8,14 @@ class UnitExceptions(Exception):
     def __str__(self):
         return "{}".format(self.msg)
 
-class UnitCountValueInvalidError(UnitExceptions):
-    """UnitCountValueInvalid."""
-    def __init__(self, msg="UnitCountValueInvalidError occured"):
+class UnitCountInvalidStartEndTimeError(UnitExceptions):
+    def __init__(self, msg="endTime is before startTime"):
         super().__init__(msg)
 
-class UnitTimeCountValueMismatchError(UnitExceptions):
-    """docstring for UnitTimeCountValueMismatchError.UnitException"""
-    def __init__(self, msg="Time difference does not match count"):
+class UnitInvalidStartTimeError(UnitExceptions):
+    def __init__(self, msg="Invalid Start Time provided."):
+        super().__init__(msg)
+
+class UnitInvalidEndTimeError(UnitExceptions):
+    def __init__(self, msg="Invalid End Time provided."):
         super().__init__(msg)

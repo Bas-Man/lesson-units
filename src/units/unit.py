@@ -46,26 +46,28 @@ class Unit(object):
         UnitCount = ((validEndTimes.index(self._endTime) -
             validStartTimes.index(self._startTime)) + 1)
         if UnitCount <= self._count:
-                raise UnitExcpt.UnitTimeCountValueMismatchError(
-                    "Time difference does not match count")
+                raise UnitExcpt.UnitCountInvalidStartEndTimeError(
+                    "self._endTime: {} is before self.startTime {}".format(
+                        self._endTime, self.startTime))
         else:
             self._count = UnitCount
 
     def __startTimeIsValid(self) -> None:
         """
-        Raise a ValueError if the format is not valid
+        Raise a UnitInvalidStartTimeError if the format is not valid
         rtype: None
         """
         if self._startTime is None:
-            raise ValueError( "startTime is None. Must be 'HH:MM'")
+            raise UnitExcpt.UnitInvalidStartTimeError(
+                "startTime is None. Must be 'HH:MM'")
         else:
             pattern = re.compile(timePattern)
             match = pattern.match(self._startTime)
             if not match:
-                raise ValueError(
+                raise UnitExcpt.UnitInvalidStartTimeError(
                     "Format Error startTime does not conform to 'HH:MM'")
         if self._startTime not in validStartTimes:
-            raise ValueError("Invalid Start Time provided")
+            raise UnitExcpt.UnitInvalidStartTimeError
 
         # startTime is valid. Split and create attributes for use with
         # a calendar Event object
@@ -76,21 +78,21 @@ class Unit(object):
     def __endTimeIsValid(self) -> None:
         """
         Return true or false if the endTime is valid.
-        Raise a ValueError if the format is not valid
+        Raise a UnitInvalidEndTimeError if the format is not valid
         rtype: None
         """
         if self._endTime is None:
-            raise ValueError(
+            raise UnitExcpt.UnitInvalidEndTimeError(
                             "endTime is None. Must be 'HH:MM'"
                             )
         else:
             pattern = re.compile(timePattern)
             match = pattern.match(self._endTime)
             if not match:
-                raise ValueError(
+                raise UnitExcpt.UnitInvalidEndTimeError(
                     "Format Error endTime does not conform to 'HH:MM'")
         if self._endTime not in validEndTimes:
-            raise ValueError("Invalid End Time provided")
+            raise UnitExcpt.UnitInvalidEndTimeError()
 
         # endTime is valid. Split and create attributes for use with
         # a calendar Event object
