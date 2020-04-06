@@ -6,8 +6,8 @@ from context import unit
 class UnitTimesTests(unittest.TestCase):
 
     def testObjectHourMinuteSplit(self):
-        self.unit = unit.Unit(startTime="07:00", endTime="07:40")
-        self.assertEqual(self.unit.startHour,7)
-        self.assertEqual(self.unit.startMinute,0)
-        self.assertEqual(self.unit.endHour,7)
-        self.assertEqual(self.unit.endMinute,40)
+        obj = unit.Unit(startTime="07:00", endTime="07:40")
+        self.assertEqual(obj.startHour,7)
+        self.assertEqual(obj.startMinute,0)
+        self.assertEqual(obj.endHour,7)
+        self.assertEqual(obj.endMinute,40)

@@ -2,6 +2,7 @@
 from .constants import validStartTimes, validEndTimes, timePattern
 from . import exceptions as UnitExcpt
 import re
+import json
 
     # TODO: Consider making a base class Unit with minimal required
     # attributes and then create subclass objects for students and instructors
@@ -203,3 +204,12 @@ class Unit(object):
         rtype: str
         """
         return str(self._count)
+
+    @property
+    def jsonStr(self) -> str:
+        """
+        Return the string representation of the Unit object.
+        ensure_ascii=False to preserve non ascii characters
+        rtype: str
+        """
+        return json.dumps(self.__dict__,ensure_ascii=False,indent=4)
