@@ -16,6 +16,9 @@ class LessonTests(unittest.TestCase):
         self.assertEqual(self.unit.startTime,"07:00")
         self.assertTrue(isinstance(self.unit,unit.Unit))
         self.assertEqual(self.lesson.numberOfUnits,0)
+        with self.assertRaises(TypeError) as e:
+            unitList = self.lesson.units
+        self.assertEqual(str(e.exception),"No Units. List can not be created.")
 
     def testappendInvalidObject(self):
         with self.assertRaises(TypeError) as e:
@@ -26,6 +29,9 @@ class LessonTests(unittest.TestCase):
         self.lesson.appendUnit(self.unit)
         self.assertEqual(self.lesson.numberOfUnits,1)
         self.assertEqual(self.lesson._units[0].startTime,"07:00")
+        isList = self.lesson.units
+        self.assertTrue(isinstance(isList,list))
+        self.assertEqual(len(isList),1)
 
     def testAppendSecondUnitToLesson(self):
         self.lesson.appendUnit(self.unit)
@@ -33,3 +39,6 @@ class LessonTests(unittest.TestCase):
         self.assertEqual(self.lesson.numberOfUnits,3)
         self.assertEqual(self.lesson._units[0].startTime,"07:00")
         self.assertEqual(self.lesson._units[1].endTime,"11:25")
+        isList = self.lesson.units
+        self.assertTrue(isinstance(isList,list))
+        self.assertEqual(len(isList),2)

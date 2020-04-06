@@ -148,8 +148,6 @@ class DailyUnits(object):
         Return the number of units for the day
         rtype: int
         """
-        # TODO: This needs to be recoded. The logic is wrong.
-        # This should iterate over list accessing unit.count summing
         return self._numOfUnits
 
     def appendUnit(self, thisunit) -> None:
@@ -163,3 +161,13 @@ class DailyUnits(object):
             self._numOfUnits += thisunit.count
         else:
             raise TypeError("Invalid Object passed")
+
+    @property
+    def units(self) -> list:
+        """
+        Return a list of events that take place on the day.
+        rtype: list
+        """
+        if self.numberOfUnits is 0:
+            raise TypeError("No Units. List can not be created.")
+        return self._units
