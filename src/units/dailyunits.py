@@ -1,5 +1,7 @@
 import datetime as dt
+import json
 import re
+
 from . import unit
 
 # Possble Name Change to unitsondate
@@ -171,3 +173,13 @@ class DailyUnits(object):
         if self.numberOfUnits is 0:
             raise TypeError("No Units. List can not be created.")
         return self._units
+
+    @property
+    def jsonStr(self) -> str:
+        """
+        code taken from:
+        https://medium.com/@yzhong.cs/serialize-and-deserialize-complex-json-in-python-205ecc636caa
+        rtype: str
+        """
+        return json.dumps(self.__dict__,default=lambda o: o.__dict__,
+                          ensure_ascii=False,indent=4)
