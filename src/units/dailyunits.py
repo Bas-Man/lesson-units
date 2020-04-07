@@ -175,7 +175,7 @@ class DailyUnits(object):
         return self._units
 
     @property
-    def jsonStr(self) -> str:
+    def json(self) -> str:
         """
         code taken from:
         https://medium.com/@yzhong.cs/serialize-and-deserialize-complex-json-in-python-205ecc636caa

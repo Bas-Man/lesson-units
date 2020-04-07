@@ -206,7 +206,7 @@ class Unit(object):
         return str(self._count)
 
     @property
-    def jsonStr(self) -> str:
+    def json(self) -> str:
         """
         Return the string representation of the Unit object.
         ensure_ascii=False to preserve non ascii characters

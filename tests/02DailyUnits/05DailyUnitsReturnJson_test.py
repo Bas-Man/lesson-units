@@ -11,14 +11,14 @@ class UnitTimesTests(unittest.TestCase):
     def testObjectJsonStr(self):
         obj1 = unit.Unit(startTime="07:00", endTime="07:40")
         self.obj.appendUnit(obj1)
-        lines = self.obj.jsonStr
+        lines = self.obj.json
         self.assertTrue('"_startTime": "07:00"' in lines)
 
     def testObjectJsonStrLocation(self):
         obj1 = unit.Unit(startTime="07:00", endTime="07:40")
         self.obj.appendUnit(obj1)
         obj2 = unit.Unit(startTime="08:30", endTime="09:55",location="Akasaka")
-        lines = obj2.jsonStr
+        lines = obj2.json
         self.assertTrue('"_startTime": "08:30"' in lines)
         self.assertTrue('"_endTime": "09:55"' in lines)
         self.assertTrue('"_location": "Akasaka"' in lines)
