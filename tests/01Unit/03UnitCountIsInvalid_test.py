@@ -7,23 +7,23 @@ from context import unit
 class UnitTests(unittest.TestCase):
 
     def testObjectCountisValid(self):
-        self.unit = unit.Unit(startTime="10:00", endTime="12:55")
-        self.assertEqual(self.unit.count,4)
+        obj = unit.Unit(startTime="10:00", endTime="12:55")
+        self.assertEqual(obj.count,4)
 
     def testObjectStartTime(self):
         with self.assertRaises(UnitExcpt.UnitInvalidStartTimeError) as e:
-            self.unit = unit.Unit(startTime="07:40",endTime="07:40")
+            obj = unit.Unit(startTime="07:40",endTime="07:40")
         self.assertEqual(str(e.exception),"Invalid Start Time provided.")
 
     def testObjectEndTimeBeforeStartTime(self):
         with self.assertRaises(UnitExcpt.UnitInvalidEndTimeError) as e:
-            self.unit = unit.Unit(startTime="07:45",endTime="07:46")
+            obj = unit.Unit(startTime="07:45",endTime="07:46")
         self.assertEqual(str(e.exception),"Invalid End Time provided.")
 
     def testObjectTimeEndTimeBeforeStartTime(self):
         with self.assertRaises(
             UnitExcpt.UnitCountInvalidStartEndTimeError
             ) as e:
-            self.unit = unit.Unit(startTime="08:30",endTime="07:40")
+            obj = unit.Unit(startTime="08:30",endTime="07:40")
         self.assertEqual(str(e.exception),
                          "self._endTime: 07:40 is before self.startTime 08:30")
