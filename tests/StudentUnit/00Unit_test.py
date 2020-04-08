@@ -1,14 +1,13 @@
 import unittest
 
 from context import exceptions as UnitExcpt
-from context import unit
+from context import student
 
 
 class UnitTests(unittest.TestCase):
 
     def setUp(self):
-        self.obj = unit.Unit()
-        
+        self.obj = student.UnitStudent()
     def testObjectStartTime(self):
         with self.assertRaises(UnitExcpt.UnitInvalidStartTimeError) as e:
             self.obj.createUnit()
@@ -32,6 +31,8 @@ class UnitTests(unittest.TestCase):
                          "Format Error endTime does not conform to 'HH:MM'")
 
     def testObectTypeNoneCountIsZero(self):
-        self.obj.createUnit(startTime="07:00", endTime="07:40")
+        self.obj.createUnit(startTime="07:00", endTime="07:40",
+                            location="Akasaka")
         self.assertIsNone(self.obj._comment)
         self.assertIs(self.obj._count,1)
+        self.assertEqual(self.obj._location,"Akasaka")

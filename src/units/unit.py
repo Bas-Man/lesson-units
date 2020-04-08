@@ -22,14 +22,12 @@ class Unit(object):
     staff or scheduler.
     """
 
-    def __init__(self, startTime=None, endTime=None,
-                 location=None, material=None,
-                 type=None,  comment=None) -> None:
+    def __init__(self):
+        pass
+
+    def createUnit(self, startTime=None, endTime=None, comment=None) -> None:
         self._startTime = startTime
         self._endTime = endTime
-        self._location = location
-        self._material = material
-        self._type = type
         self._count = 0
         self._comment = comment
         # TODO: Decide how to handle bonus units
@@ -150,26 +148,6 @@ class Unit(object):
         return int(self._endMinute)
 
     @property
-    def material(self) -> str:
-        """
-        Return the type of class material.
-        rtype: str
-        """
-        if self._material is None:
-            return ""
-        return self._material
-
-    @property
-    def type(self) ->str:
-        """
-        Return the lesson type.
-        rtype: str
-        """
-        if self._type is None:
-            return ""
-        return self._type
-
-    @property
     def comment(self) -> str:
         """
         Return any comments attached to the lesson.
@@ -178,16 +156,6 @@ class Unit(object):
         if self._comment is None:
             return ""
         return self._comment
-
-    @property
-    def location(self) -> str:
-        """
-        Return the location of the lesson.
-        rtype: str
-        """
-        if self._location is None:
-            return ""
-        return self._location
 
     @property
     def count(self) -> int:
