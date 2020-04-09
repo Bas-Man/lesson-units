@@ -184,3 +184,90 @@ class Unit(object):
         rtype: str
         """
         return json.dumps(self.__dict__,ensure_ascii=False,indent=4)
+
+
+class Student(Unit):
+    """
+    Create a lesson unit object.
+
+    This will store the information for a given Unit. It will provide details
+    such as startTime, endTime. The material to be taught.
+
+    Lesson type, private, office, bonus, travel.
+
+    Number of lessons; this will be a single unit in the case of student,
+    2 or more in the case of an instructor.
+
+    Location of the lesson to be given. Any additional comments provided by the
+    staff or scheduler.
+    """
+
+    def __init__(self) -> None:
+        super().__init__()
+        self._location = None
+
+    def createUnit(self, startTime=None, endTime=None, comment=None,
+                   location=None):
+        super().createUnit(startTime,endTime,comment)
+        self._location = location
+
+    @property
+    def location(self) -> str:
+        """
+        Return the location of the lesson.
+        rtype: str
+        """
+        if self._location is None:
+            return ""
+        return self._location
+
+class Instructor(Student):
+    """
+    Create a lesson unit object.
+
+    This will store the information for a given Unit. It will provide details
+    such as startTime, endTime. The material to be taught.
+
+    Lesson type, private, office, bonus, travel.
+
+    Number of lessons; this will be a single unit in the case of student,
+    2 or more in the case of an instructor.
+
+    Location of the lesson to be given. Any additional comments provided by the
+    staff or scheduler.
+    """
+
+    def __init__(self) -> None:
+        super().__init__()
+        self._material = None
+        self._type = None
+        self._bonus = False
+        # TODO: Decide how to handle bonus units
+
+    def createUnit(self, startTime=None,endTime=None,location=None,
+                   material=None,comment=None, bonus=False) -> None:
+        # NOTE: Super().createUnit is using positional Params below
+        super().createUnit(startTime,endTime,comment,location)
+        self._material = material
+        self._type = type
+        self._bonus = bonus
+
+    @property
+    def material(self) -> str:
+        """
+        Return the type of class material.
+        rtype: str
+        """
+        if self._material is None:
+            return ""
+        return self._material
+
+    @property
+    def type(self) ->str:
+        """
+        Return the lesson type.
+        rtype: str
+        """
+        if self._type is None:
+            return ""
+        return self._type
