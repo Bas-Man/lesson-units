@@ -23,7 +23,8 @@ class Unit(object):
 
     def __repr__(self):
         message = (
-            f"<unit.Unit: '_startTime:' = {self._startTime}, "
+            f"<{self.__class__.__name__}: "
+            f"'_startTime:' = {self._startTime}, "
             f"'_endTime:' = {self._endTime} "
             f"'_count:' = {self._count}, "
             f"'_comment:' = {self._comment}"
@@ -211,7 +212,8 @@ class Student(Unit):
 
     def __repr__(self):
         message = (
-            f"<unit.Student: '_startTime:' = {self._startTime}, "
+            f"{self.__class__.__name__}: "
+            f"'_startTime:' = {self._startTime}, "
             f"'_endTime:' = {self._endTime} "
             f"'_count:' = {self._count}, "
             f"'_comment:' = {self._comment}, "
@@ -262,7 +264,8 @@ class Instructor(Student):
 
     def __repr__(self):
         message = (
-            f"<unit.Instructor: '_startTime:' = {self._startTime}, "
+            f"{self.__class__.__name__}: "
+            f"'_startTime:' = {self._startTime}, "
             f"'_endTime:' = {self._endTime} "
             f"'_count:' = {self._count}, "
             f"'_comment:' = {self._comment}, "

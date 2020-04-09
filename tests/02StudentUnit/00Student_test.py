@@ -44,3 +44,6 @@ class UnitTests(unittest.TestCase):
         self.assertIsNone(self.obj._comment)
         self.assertIs(self.obj._count,1)
         self.assertEqual(self.obj._location,"Akasaka")
+
+    def testREPR(self):
+        self.assertEqual(repr(self.obj),"Student: '_startTime:' = None, '_endTime:' = None '_count:' = 0, '_comment:' = None, '_location:' = None>")

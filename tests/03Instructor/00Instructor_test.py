@@ -50,3 +50,6 @@ class UnitTests(unittest.TestCase):
         self.assertEqual(self.obj.material,"")
         self.assertIsNone(self.obj._type)
         self.assertEqual(self.obj.type,"")
+
+    def testREPR(self):
+        self.assertEqual(repr(self.obj),"Instructor: '_startTime:' = None, '_endTime:' = None '_count:' = 0, '_comment:' = None, '_material:' = None, '_type:' = None, '_bonus:' = False, '_location:' = None>")

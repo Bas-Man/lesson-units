@@ -8,7 +8,7 @@ class UnitTests(unittest.TestCase):
 
     def setUp(self):
         self.obj = unit.Unit()
-        
+
     def testObjectStartTime(self):
         with self.assertRaises(UnitExcpt.UnitInvalidStartTimeError) as e:
             self.obj.createUnit()
@@ -35,3 +35,7 @@ class UnitTests(unittest.TestCase):
         self.obj.createUnit(startTime="07:00", endTime="07:40")
         self.assertIsNone(self.obj._comment)
         self.assertIs(self.obj._count,1)
+
+    def testREPR(self):
+        self.assertEqual(repr(self.obj),
+                         "<Unit: '_startTime:' = None, '_endTime:' = None '_count:' = 0, '_comment:' = None>")
