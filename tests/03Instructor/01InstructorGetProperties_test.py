@@ -1,12 +1,12 @@
 import unittest
 
-from context import student
+from context import unit
 
 
 class UnitTests(unittest.TestCase):
 
     def setUp(self):
-        self.unit = student.UnitStudent()
+        self.unit = unit.Instructor()
         self.unit.createUnit(startTime="07:00", endTime="07:40")
 
     def testObjectCreatedGetProperies(self):

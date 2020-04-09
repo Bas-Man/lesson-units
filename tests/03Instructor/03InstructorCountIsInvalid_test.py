@@ -1,13 +1,13 @@
 import unittest
 
 from context import exceptions as UnitExcpt
-from context import student
+from context import unit
 
 
 class UnitTests(unittest.TestCase):
 
     def setUp(self):
-        self.obj = student.UnitStudent()
+        self.obj = unit.Instructor()
 
     def testObjectCountisValid(self):
         self.obj.createUnit(startTime="10:00", endTime="12:55")

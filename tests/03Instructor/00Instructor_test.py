@@ -1,13 +1,13 @@
 import unittest
 
 from context import exceptions as UnitExcpt
-from context import student
+from context import unit
 
 
 class UnitTests(unittest.TestCase):
 
     def setUp(self):
-        self.obj = student.UnitStudent()
+        self.obj = unit.Instructor()
 
     def testInit(self):
         self.assertIsNone(self.obj._startTime)
@@ -15,6 +15,9 @@ class UnitTests(unittest.TestCase):
         self.assertIsNone(self.obj._comment)
         self.assertEqual(self.obj._count,0)
         self.assertIsNone(self.obj._location)
+        self.assertIsNone(self.obj._type)
+        self.assertIsNone(self.obj._material)
+        self.assertFalse(self.obj._bonus)
 
     def testObjectStartTime(self):
         with self.assertRaises(UnitExcpt.UnitInvalidStartTimeError) as e:

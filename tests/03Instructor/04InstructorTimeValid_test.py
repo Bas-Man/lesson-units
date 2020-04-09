@@ -1,12 +1,12 @@
 import unittest
 
 from context import exceptions as UnitExcpt
-from context import student
+from context import unit
 
 class UnitTimesTests(unittest.TestCase):
 
     def testObjectHourMinuteSplit(self):
-        obj = student.UnitStudent()
+        obj = unit.Instructor()
         obj.createUnit(startTime="07:00", endTime="07:40",location="Otemachi")
         self.assertEqual(obj.startHour,7)
         self.assertEqual(obj.startMinute,0)

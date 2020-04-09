@@ -1,19 +1,19 @@
 import unittest
 
 from context import exceptions as UnitExcpt
-from context import student
+from context import unit
 
 class UnitTimesTests(unittest.TestCase):
 
     def setUp(self):
-        self.obj = student.UnitStudent()
+        self.obj = unit.Instructor()
 
     def testObjectJsonStr(self):
         self.obj.createUnit(startTime="07:00", endTime="07:40")
         lines = self.obj.json
         self.assertTrue('"_startTime": "07:00"' in lines)
 
-    def testObjectJsonStrLocation(self):
+    def testObjectJsonStr(self):
         self.obj.createUnit(startTime="07:00", endTime="07:40",
                             comment="Akasaka", location="Akasaka")
         lines = self.obj.json
