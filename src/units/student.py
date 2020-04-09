@@ -25,7 +25,7 @@ class UnitStudent(unit.Unit):
         super().__init__()
         self._location = None
 
-    def createUnit(self,startTime=None, endTime=None, comment=None,
+    def createUnit(self, startTime=None, endTime=None, comment=None,
                    location=None):
         super().createUnit(startTime,endTime,comment)
         self._location = location

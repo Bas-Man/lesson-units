@@ -8,6 +8,14 @@ class UnitTests(unittest.TestCase):
 
     def setUp(self):
         self.obj = student.UnitStudent()
+
+    def testInit(self):
+        self.assertIsNone(self.obj._startTime)
+        self.assertIsNone(self.obj._endTime)
+        self.assertIsNone(self.obj._comment)
+        self.assertEqual(self.obj._count,0)
+        self.assertIsNone(self.obj._location)
+
     def testObjectStartTime(self):
         with self.assertRaises(UnitExcpt.UnitInvalidStartTimeError) as e:
             self.obj.createUnit()
