@@ -22,7 +22,8 @@ class LessonTests(unittest.TestCase):
         self.assertEqual(str(e.exception),"Invalid Object passed")
 
     def testAppendUnitToLesson(self):
-        unit1 = unit.Unit(startTime="07:00",endTime="07:40")
+        unit1 = unit.Unit()
+        unit1.createUnit(startTime="07:00",endTime="07:40")
         self.lesson.appendUnit(unit1)
         self.assertEqual(self.lesson.numberOfUnits,1)
         self.assertEqual(self.lesson._units[0].startTime,"07:00")
@@ -31,8 +32,10 @@ class LessonTests(unittest.TestCase):
         self.assertEqual(len(isList),1)
 
     def testAppendSecondUnitToLesson(self):
-        unit1 = unit.Unit(startTime="07:00",endTime="07:40")
-        unit2 = unit.Unit(startTime="10:00",endTime="11:25")
+        unit1 = unit.Unit()
+        unit2 = unit.Unit()
+        unit1.createUnit(startTime="07:00",endTime="07:40")
+        unit2.createUnit(startTime="10:00",endTime="11:25")
         self.lesson.appendUnit(unit1)
         self.lesson.appendUnit(unit2)
         self.assertEqual(self.lesson.numberOfUnits,3)
