@@ -15,3 +15,4 @@ class UnitTests(unittest.TestCase):
         self.assertEqual(self.unit.comment,"")
         self.assertEqual(self.unit.count,1)
         self.assertEqual(self.unit.countToStr,"1")
+        self.assertEqual(self.unit.location,"")

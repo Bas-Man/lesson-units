@@ -47,3 +47,6 @@ class UnitTests(unittest.TestCase):
         self.assertIsNone(self.obj._comment)
         self.assertIs(self.obj._count,1)
         self.assertEqual(self.obj._location,"Akasaka")
+        self.assertEqual(self.obj.material,"")
+        self.assertIsNone(self.obj._type)
+        self.assertEqual(self.obj.type,"")

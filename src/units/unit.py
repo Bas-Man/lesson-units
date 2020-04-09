@@ -245,7 +245,7 @@ class Instructor(Student):
         # TODO: Decide how to handle bonus units
 
     def createUnit(self, startTime=None,endTime=None,location=None,
-                   material=None,comment=None, bonus=False) -> None:
+                   material=None, type=None, comment=None, bonus=False) -> None:
         # NOTE: Super().createUnit is using positional Params below
         super().createUnit(startTime,endTime,comment,location)
         self._material = material
