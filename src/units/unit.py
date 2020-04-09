@@ -8,18 +8,11 @@ import json
     # attributes and then create subclass objects for students and instructors
 class Unit(object):
     """
-    Create a lesson unit object.
+    Create a base unit object.
 
-    This will store the information for a given Unit. It will provide details
-    such as startTime, endTime. The material to be taught.
-
-    Lesson type, private, office, bonus, travel.
-
-    Number of lessons; this will be a single unit in the case of student,
-    2 or more in the case of an instructor.
-
-    Location of the lesson to be given. Any additional comments provided by the
-    staff or scheduler.
+    This will store minimum information for a given Unit.
+    It will provide details such as startTime, endTime and comment.
+    This will allow additional types of units to be derived
     """
 
     def __init__(self):
@@ -27,6 +20,16 @@ class Unit(object):
         self._endTime = None
         self._count = 0
         self._comment = None
+
+    def __repr__(self):
+        message = (
+            f"<unit.Unit: '_startTime:' = {self._startTime}, "
+            f"'_endTime:' = {self._endTime} "
+            f"'_count:' = {self._count}, "
+            f"'_comment:' = {self._comment}"
+            f">")
+        return message
+
 
     def createUnit(self, startTime=None, endTime=None, comment=None) -> None:
         self._startTime = startTime
@@ -206,8 +209,21 @@ class Student(Unit):
         super().__init__()
         self._location = None
 
+    def __repr__(self):
+        message = (
+            f"<unit.Student: '_startTime:' = {self._startTime}, "
+            f"'_endTime:' = {self._endTime} "
+            f"'_count:' = {self._count}, "
+            f"'_comment:' = {self._comment}, "
+            f"'_location:' = {self._location}"
+            f">")
+        return message
+
+
+
     def createUnit(self, startTime=None, endTime=None, comment=None,
                    location=None):
+        # positional arguments; Do not Change
         super().createUnit(startTime,endTime,comment)
         self._location = location
 
@@ -244,6 +260,19 @@ class Instructor(Student):
         self._bonus = False
         # TODO: Decide how to handle bonus units
 
+    def __repr__(self):
+        message = (
+            f"<unit.Instructor: '_startTime:' = {self._startTime}, "
+            f"'_endTime:' = {self._endTime} "
+            f"'_count:' = {self._count}, "
+            f"'_comment:' = {self._comment}, "
+            f"'_material:' = {self._material}, "
+            f"'_type:' = {self._type}, "
+            f"'_bonus:' = {self._bonus}, "
+            f"'_location:' = {self._location}"
+            f">")
+        return message
+
     def createUnit(self, startTime=None,endTime=None,location=None,
                    material=None, type=None, comment=None, bonus=False) -> None:
         # NOTE: Super().createUnit is using positional Params below
@@ -266,8 +295,13 @@ class Instructor(Student):
     def type(self) ->str:
         """
         Return the lesson type.
+        Appends " - Bonus" if _bonus is True
         rtype: str
         """
         if self._type is None:
             return ""
-        return self._type
+        if self._bonus:
+            message = f"{self._type} - Bonus"
+        else:
+            message = self._type
+        return message
