@@ -23,7 +23,10 @@ class Unit(object):
     """
 
     def __init__(self):
-        pass
+        self._startTime = None
+        self._endTime = None
+        self._count = 0
+        self._comment = None
 
     def createUnit(self, startTime=None, endTime=None, comment=None) -> None:
         self._startTime = startTime
