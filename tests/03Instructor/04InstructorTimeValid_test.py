@@ -5,11 +5,24 @@ from context import unit
 
 class UnitTimesTests(unittest.TestCase):
 
+    def setUp(self):
+        self.obj = unit.Instructor()
+
     def testObjectHourMinuteSplit(self):
-        obj = unit.Instructor()
-        obj.createUnit(startTime="07:00", endTime="07:40",location="Otemachi")
-        self.assertEqual(obj.startHour,7)
-        self.assertEqual(obj.startMinute,0)
-        self.assertEqual(obj.endHour,7)
-        self.assertEqual(obj.endMinute,40)
-        self.assertEqual(obj.location,"Otemachi")
+        self.obj.createUnit(startTime="07:00", endTime="07:40",location="Otemachi")
+        self.assertEqual(self.obj.startHour,7)
+        self.assertEqual(self.obj.startMinute,0)
+        self.assertEqual(self.obj.endHour,7)
+        self.assertEqual(self.obj.endMinute,40)
+        self.assertEqual(self.obj.location,"Otemachi")
+
+    def testObjectType(self):
+        self.obj.createUnit(startTime="07:00", endTime="07:40",type="Private")
+        self.assertFalse(self.obj._bonus)
+        self.assertEqual(self.obj.type,"Private")
+
+    def testObjectTypeBonus(self):
+        self.obj.createUnit(startTime="07:00", endTime="07:40",type="Private",
+                            bonus=True)
+        self.assertTrue(self.obj._bonus)
+        self.assertEqual(self.obj.type,"Private - Bonus")
