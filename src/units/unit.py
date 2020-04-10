@@ -21,23 +21,29 @@ class Unit(object):
         self._count = 0
         self._comment = None
 
-    def __repr__(self):
+    def __repr__(self): # pragma: no cover
         message = (
-            f"<{self.__class__.__name__}: "
-            f"'_startTime:' = {self._startTime}, "
-            f"'_endTime:' = {self._endTime} "
-            f"'_count:' = {self._count}, "
-            f"'_comment:' = {self._comment}"
+            f"<{self.__class__.__name__}:  "
+            f"'_startTime:' = {self._startTime!r}, "
+            f"'_endTime:' = {self._endTime!r}, "
+            f"'_count:' = {self._count!r},\n\t"
+            f"'_comment:' = {self._comment!r}"
             f">")
         return message
 
 
     def createUnit(self, startTime=None, endTime=None, comment=None) -> None:
+        """
+        This is the Base Unit Class. Other units can be derivded from this.
+        param: startTime
+        param: endTime
+        param: count
+        rtype: None
+        """
         self._startTime = startTime
         self._endTime = endTime
         self._count = 0
         self._comment = comment
-        # TODO: Decide how to handle bonus units
         self.__startTimeIsValid()
         self.__endTimeIsValid()
         self.__countIsValid()
@@ -210,12 +216,12 @@ class Student(Unit):
         super().__init__()
         self._location = None
 
-    def __repr__(self):
+    def __repr__(self): # pragma: no cover
         message = (
             f"{self.__class__.__name__}: "
             f"'_startTime:' = {self._startTime}, "
-            f"'_endTime:' = {self._endTime} "
-            f"'_count:' = {self._count}, "
+            f"'_endTime:' = {self._endTime}, "
+            f"'_count:' = {self._count},\n\t "
             f"'_comment:' = {self._comment}, "
             f"'_location:' = {self._location}"
             f">")
@@ -260,17 +266,16 @@ class Instructor(Student):
         self._material = None
         self._type = None
         self._bonus = False
-        # TODO: Decide how to handle bonus units
 
-    def __repr__(self):
+    def __repr__(self): # pragma: no cover
         message = (
             f"{self.__class__.__name__}: "
             f"'_startTime:' = {self._startTime}, "
-            f"'_endTime:' = {self._endTime} "
-            f"'_count:' = {self._count}, "
+            f"'_endTime:' = {self._endTime}, "
+            f"'_count:' = {self._count},\n\t    "
             f"'_comment:' = {self._comment}, "
             f"'_material:' = {self._material}, "
-            f"'_type:' = {self._type}, "
+            f"'_type:' = {self._type},\n\t    "
             f"'_bonus:' = {self._bonus}, "
             f"'_location:' = {self._location}"
             f">")
