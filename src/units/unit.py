@@ -283,6 +283,16 @@ class Instructor(Student):
         self._material = material
         self._type = type
         self._bonus = bonus
+        self.__valiateTypeBonus()
+
+    def __valiateTypeBonus(self) -> None:
+        """
+        Valiate that _type is not None when _bonus is True
+        Raise TypeBonusInstructorError if this case is not True
+        rtype: None
+        """
+        if self._type is None and self._bonus:
+            raise UnitExcpt.TypeBonusInstructorError()
 
     @property
     def material(self) -> str:
@@ -306,6 +316,4 @@ class Instructor(Student):
                 return ""
             return self._type
         else:
-            if self._type is None:
-                return "Bonus"
             return f'{self._type} - Bonus'
