@@ -301,10 +301,11 @@ class Instructor(Student):
         Appends " - Bonus" if _bonus is True
         rtype: str
         """
-        if self._type is None:
-            return ""
-        if self._bonus:
-            message = f"{self._type} - Bonus"
+        if not self._bonus:
+            if self._type is None:
+                return ""
+            return self._type
         else:
-            message = self._type
-        return message
+            if self._type is None:
+                return "Bonus"
+            return f'{self._type} - Bonus'
