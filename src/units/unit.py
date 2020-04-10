@@ -55,14 +55,14 @@ class Unit(object):
         rtype: None
         """
         # TODO: Add index range to speed up index() check
-        UnitCount = ((validEndTimes.index(self._endTime) -
+        unitCount = ((validEndTimes.index(self._endTime) -
             validStartTimes.index(self._startTime)) + 1)
-        if UnitCount <= self._count:
+        if unitCount <= self._count:
                 raise UnitExcpt.UnitCountInvalidStartEndTimeError(
                     "self._endTime: {} is before self.startTime {}".format(
                         self._endTime, self.startTime))
         else:
-            self._count = UnitCount
+            self._count = unitCount
 
     def __startTimeIsValid(self) -> None:
         """
