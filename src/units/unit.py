@@ -22,19 +22,36 @@ class Unit(object):
         self._comment = None
 
     def __repr__(self): # pragma: no cover
-        message = (
+        return (
             f"<{self.__class__.__name__}:  "
             f"'_startTime:' = {self._startTime}, "
             f"'_endTime:' = {self._endTime}, "
             f"'_count:' = {self._count},\n\t"
             f"'_comment:' = {self._comment}"
-            f">")
-        return message
+            f">"
+            )
 
+    def __str__(self): # pragma: no cover
+        return (
+            f"This unit starts at {self._startTime} and ends at"
+            f" {self._endTime}.\nThis is {self._count} unit{self.__plural()}.\n"
+            f"Comments: {self.comment}"
+            )
+
+    def __plural(self) -> str: # pragma: no cover
+        """
+        Helper method append 's' if counter is zero more greater than 1
+        rtype: str
+        """
+        if self._count > 1 or self._count == 0:
+            return "s"
+        else:
+            return ""
 
     def createUnit(self, startTime=None, endTime=None, comment=None) -> None:
         """
         This is the Base Unit Class. Other units can be derivded from this.
+
         param: startTime
         param: endTime
         param: count
@@ -123,16 +140,16 @@ class Unit(object):
     @property
     def startHour(self) -> int:
         """
-        Return the startHour used with icalendar.Event object.
-        rtype: str
+        Return the startHour.
+        rtype: int
         """
         return int(self._startHour)
 
     @property
     def startMinute(self) -> int:
         """
-        Return the startMinute used with icalendar.Event object.
-        rtype: str
+        Return the startMinute.
+        rtype: int
         """
         return int(self._startMinute)
 
@@ -147,23 +164,23 @@ class Unit(object):
     @property
     def endHour(self) -> int:
         """
-        Return the endHour used with icalendar.Event object.
-        rtype: str
+        Return the endHour.
+        rtype: int
         """
         return int(self._endHour)
 
     @property
     def endMinute(self) -> int:
         """
-        Return the endMinute used with icalendar.Event object.
-        rtype: str
+        Return the endMinute.
+        rtype: int
         """
         return int(self._endMinute)
 
     @property
     def comment(self) -> str:
         """
-        Return any comments attached to the lesson.
+        Return any comments attached to the unit.
         rtype: str
         """
         if self._comment is None:
@@ -173,7 +190,8 @@ class Unit(object):
     @property
     def count(self) -> int:
         """
-        Return the number of Units for the lesson as a number
+        Return the number of Units covered from startTime to _endTime
+        example: 07:00 ~ 07:40 -> 1 unit, 07:00 ~ 8:25 -> 2 units
         rtype: int
         """
         return self._count
@@ -181,7 +199,7 @@ class Unit(object):
     @property
     def countToStr(self) -> str:
         """
-        Return the number of Units for the lesson as a string.
+        Return the number of Units as a string.
         rtype: str
         """
         return str(self._count)
@@ -217,7 +235,7 @@ class Student(Unit):
         self._location = None
 
     def __repr__(self): # pragma: no cover
-        message = (
+        return (
             f"{self.__class__.__name__}: "
             f"'_startTime:' = {self._startTime}, "
             f"'_endTime:' = {self._endTime}, "
@@ -225,9 +243,11 @@ class Student(Unit):
             f"'_comment:' = {self._comment}, "
             f"'_location:' = {self._location}"
             f">")
-        return message
 
-
+    def __str__(self): # pragma: no cover
+        return (
+            f"{super().__str__()}\n"
+            f"Location: {self.location}")
 
     def createUnit(self, startTime=None, endTime=None, comment=None,
                    location=None):
@@ -268,7 +288,7 @@ class Instructor(Student):
         self._bonus = False
 
     def __repr__(self): # pragma: no cover
-        message = (
+        return (
             f"{self.__class__.__name__}: "
             f"'_startTime:' = {self._startTime}, "
             f"'_endTime:' = {self._endTime}, "
@@ -279,7 +299,14 @@ class Instructor(Student):
             f"'_bonus:' = {self._bonus}, "
             f"'_location:' = {self._location}"
             f">")
-        return message
+
+    def __str__(self): # pragma: no cover
+        return (
+            f"{super().__str__()}\n"
+            f"Material: {self.material}\n"
+            f"Type: {self.type}\n"
+            f"Bonus: {self._bonus}"
+        )
 
     def createUnit(self, startTime=None,endTime=None,location=None,
                    material=None, type=None, comment=None, bonus=False) -> None:
