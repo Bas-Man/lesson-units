@@ -216,18 +216,11 @@ class Unit(object):
 
 class Student(Unit):
     """
-    Create a Student unit object.
+    This is the Student Unit Class derivded from Unit.
 
-    This will store the information for a given Unit. It will provide details
-    such as startTime, endTime. The material to be taught.
-
-    Lesson type, private, office, bonus, travel.
-
-    Number of lessons; this will be a single unit in the case of student,
-    2 or more in the case of an instructor.
-
-    Location of the lesson to be given. Any additional comments provided by the
-    staff or scheduler.
+    This will store the information for a given Student's Unit.
+    It inherits, 'startTime', 'endTime' and 'comment'. It adds 'location' as
+    as new property
     """
 
     def __init__(self) -> None:
@@ -251,6 +244,14 @@ class Student(Unit):
 
     def createUnit(self, startTime=None, endTime=None, comment=None,
                    location=None):
+        """
+        Create a data populated instance of Student
+        param: startTime
+        param: endTime
+        param: location
+        param: comment
+        rtype: None
+        """
         # positional arguments; Do not Change
         super().createUnit(startTime,endTime,comment)
         self._location = location
@@ -267,18 +268,11 @@ class Student(Unit):
 
 class Instructor(Student):
     """
-    Create a lesson unit object.
+    This is the Instructor Unit Class derivded from Student.
 
-    This will store the information for a given Unit. It will provide details
-    such as startTime, endTime. The material to be taught.
-
-    Lesson type, private, office, bonus, travel.
-
-    Number of lessons; this will be a single unit in the case of student,
-    2 or more in the case of an instructor.
-
-    Location of the lesson to be given. Any additional comments provided by the
-    staff or scheduler.
+    This will store the information for a given Instructor's Unit.
+    It inherits, 'startTime', 'endTime', 'comment', 'location'.
+    It adds 'material', 'type' and 'bonus' as new attributes.
     """
 
     def __init__(self) -> None:
@@ -308,8 +302,19 @@ class Instructor(Student):
             f"Bonus: {self._bonus}"
         )
 
-    def createUnit(self, startTime=None,endTime=None,location=None,
-                   material=None, type=None, comment=None, bonus=False) -> None:
+    def createUnit(self, startTime=None,endTime=None,comment=None,
+                   location=None, material=None, type=None,
+                   bonus=False) -> None:
+        """
+        param: startTime
+        param: endTime
+        param: count
+        param: location
+        param: material
+        param: type
+        param: bonus
+        rtype: None
+        """
         # NOTE: Super().createUnit is using positional Params below
         super().createUnit(startTime,endTime,comment,location)
         self._material = material
