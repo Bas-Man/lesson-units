@@ -10,7 +10,7 @@ class Unit(object):
     """
     Create a base unit object.
 
-    This will store minimum information for a given Unit.
+    This will store minimal information for a given Unit.
     It will provide details such as startTime, endTime and comment.
     This will allow additional types of units to be derived
     """
@@ -18,16 +18,16 @@ class Unit(object):
     def __init__(self):
         self._startTime = None
         self._endTime = None
-        self._count = 0
+        self._count = 0 # Internally calculated.
         self._comment = None
 
     def __repr__(self): # pragma: no cover
         message = (
             f"<{self.__class__.__name__}:  "
-            f"'_startTime:' = {self._startTime!r}, "
-            f"'_endTime:' = {self._endTime!r}, "
-            f"'_count:' = {self._count!r},\n\t"
-            f"'_comment:' = {self._comment!r}"
+            f"'_startTime:' = {self._startTime}, "
+            f"'_endTime:' = {self._endTime}, "
+            f"'_count:' = {self._count},\n\t"
+            f"'_comment:' = {self._comment}"
             f">")
         return message
 
@@ -198,7 +198,7 @@ class Unit(object):
 
 class Student(Unit):
     """
-    Create a lesson unit object.
+    Create a Student unit object.
 
     This will store the information for a given Unit. It will provide details
     such as startTime, endTime. The material to be taught.
