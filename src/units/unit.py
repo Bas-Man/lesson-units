@@ -287,11 +287,11 @@ class Instructor(Student):
             f"'_startTime:' = {self._startTime}, "
             f"'_endTime:' = {self._endTime}, "
             f"'_count:' = {self._count},\n\t    "
-            f"'_comment:' = {self._comment}, "
+            f"'_location:' = {self._location}, "
             f"'_material:' = {self._material}, "
             f"'_type:' = {self._type},\n\t    "
             f"'_bonus:' = {self._bonus}, "
-            f"'_location:' = {self._location}"
+            f"'_comment:' = {self._comment}"
             f">")
 
     def __str__(self): # pragma: no cover
