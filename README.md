@@ -14,3 +14,5 @@ add code and exceptions for checking string input on:
 - comment
 - type
 - location (optional?)
+
+Consider adding "link" property to unit.Unit or Student?
