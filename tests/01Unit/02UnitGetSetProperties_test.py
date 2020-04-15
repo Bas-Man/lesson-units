@@ -14,5 +14,6 @@ class UnitTests(unittest.TestCase):
         self.assertEqual(self.unit.startTime,"08:30")
         self.assertEqual(self.unit.endTime,"09:10")
         self.assertEqual(self.unit.comment,"@Akasaka")
+        self.assertTrue(self.unit.hasComment)
         self.assertEqual(self.unit.count,1)
         self.assertEqual(self.unit.countToStr,"1")

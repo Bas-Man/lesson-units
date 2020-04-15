@@ -23,9 +23,11 @@ class UnitTests(unittest.TestCase):
     def testObjectCreatedGetProperies(self):
         self.unit.createUnit(startTime="07:00", endTime="07:40",
                              material="BE3")
+        self.assertTrue(self.unit.hasMaterial)
         self.assertEqual(self.unit.material,"BE3")
         self.assertIsNone(self.unit._type)
 
     def testObjectType(self):
         self.unit.createUnit(startTime="08:30",endTime="09:10", type="Private")
+        self.assertTrue(self.unit.hasType)
         self.assertEqual(self.unit.type,"Private")

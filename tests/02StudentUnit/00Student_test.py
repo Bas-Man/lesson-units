@@ -15,6 +15,7 @@ class UnitTests(unittest.TestCase):
         self.assertIsNone(self.obj._comment)
         self.assertEqual(self.obj._count,0)
         self.assertIsNone(self.obj._location)
+        self.assertFalse(self.obj.hasLocation)
 
     def testObjectStartTime(self):
         with self.assertRaises(UnitExcpt.UnitInvalidStartTimeError) as e:
@@ -41,6 +42,7 @@ class UnitTests(unittest.TestCase):
     def testObectTypeNoneCountIsZero(self):
         self.obj.createUnit(startTime="07:00", endTime="07:40",
                             location="Akasaka")
+        self.assertTrue(self.obj.hasLocation)
         self.assertIsNone(self.obj._comment)
         self.assertIs(self.obj._count,1)
         self.assertEqual(self.obj._location,"Akasaka")

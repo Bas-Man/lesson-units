@@ -178,6 +178,16 @@ class Unit(object):
         return int(self._endMinute)
 
     @property
+    def hasComment(self) -> bool:
+        """
+        Return True when comment is not None. Else return False
+        rtype: bool
+        """
+        if self._comment is not None:
+            return True
+        return False
+
+    @property
     def comment(self) -> str:
         """
         Return any comments attached to the unit.
@@ -257,6 +267,16 @@ class Student(Unit):
         self._location = location
 
     @property
+    def hasLocation(self) -> bool:
+        """
+        Return True when location is not None. Else return False
+        rtype: bool
+        """
+        if self._location is not None:
+            return True
+        return False
+
+    @property
     def location(self) -> str:
         """
         Return the location of the lesson.
@@ -332,6 +352,16 @@ class Instructor(Student):
             raise UnitExcpt.TypeBonusInstructorError()
 
     @property
+    def hasMaterial(self) -> bool:
+        """
+        Return True when material is not None. Else return False
+        rtype: bool
+        """
+        if self._material is not None:
+            return True
+        return False
+
+    @property
     def material(self) -> str:
         """
         Return the type of class material.
@@ -340,6 +370,16 @@ class Instructor(Student):
         if self._material is None:
             return ""
         return self._material
+
+    @property
+    def hasType(self) -> bool:
+        """
+        Return True when type is not None. Else return False
+        rtype: bool
+        """
+        if self._type is not None:
+            return True
+        return False
 
     @property
     def type(self) ->str:
@@ -354,3 +394,11 @@ class Instructor(Student):
             return self._type
         else:
             return f'{self._type} - Bonus'
+
+    @property
+    def isBonus(self) -> bool:
+        """
+        Return bonus which is either True or False
+        rtype: bool
+        """
+        return self._bonus

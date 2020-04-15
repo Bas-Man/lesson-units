@@ -18,6 +18,9 @@ class UnitTests(unittest.TestCase):
         self.assertIsNone(self.obj._type)
         self.assertIsNone(self.obj._material)
         self.assertFalse(self.obj._bonus)
+        self.assertFalse(self.obj.hasType)
+        self.assertFalse(self.obj.hasMaterial)
+        self.assertFalse(self.obj.isBonus)
 
     def testObjectStartTime(self):
         with self.assertRaises(UnitExcpt.UnitInvalidStartTimeError) as e:

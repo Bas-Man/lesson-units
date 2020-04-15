@@ -34,4 +34,5 @@ class UnitTests(unittest.TestCase):
     def testObectTypeNoneCountIsZero(self):
         self.obj.createUnit(startTime="07:00", endTime="07:40")
         self.assertIsNone(self.obj._comment)
+        self.assertFalse(self.obj.hasComment)
         self.assertIs(self.obj._count,1)

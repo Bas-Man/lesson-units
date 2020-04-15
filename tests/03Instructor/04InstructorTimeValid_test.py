@@ -26,6 +26,7 @@ class UnitTimesTests(unittest.TestCase):
         self.obj.createUnit(startTime="07:00", endTime="07:40",type="Private",
                             bonus=True)
         self.assertTrue(self.obj._bonus)
+        self.assertTrue(self.obj.isBonus)
         self.assertEqual(self.obj.type,"Private - Bonus")
 
     def testObjectTypeBonusException(self):
