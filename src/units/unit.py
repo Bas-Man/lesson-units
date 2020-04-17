@@ -41,7 +41,8 @@ class Unit(object):
     def __plural(self) -> str: # pragma: no cover
         """
         Helper method append 's' if counter is zero more greater than 1
-        rtype: str
+
+        :rtype: str
         """
         if self._count > 1 or self._count == 0:
             return "s"
@@ -52,10 +53,14 @@ class Unit(object):
         """
         This is the Base Unit Class. Other units can be derivded from this.
 
-        param: startTime
-        param: endTime
-        param: count
-        rtype: None
+        :param startTime:
+        :type startTime: str
+        :param endTime:
+        :type endTime: str
+        :param count:
+        :type count: int
+        :returns: A object of class Unit
+        :rtype: None
         """
         self._startTime = startTime
         self._endTime = endTime
@@ -133,7 +138,9 @@ class Unit(object):
     def startTime(self) -> str:
         """
         Return the startTime of the lesson.
-        rtype:  str
+
+        :returns: The string stored in _startTime
+        :rtype:  str
         """
         return self._startTime
 
@@ -141,7 +148,10 @@ class Unit(object):
     def startHour(self) -> int:
         """
         Return the startHour.
-        rtype: int
+
+        :returns: The Hour only portion of startTime which is stored in
+        _startHour
+        :rtype: int
         """
         return int(self._startHour)
 
@@ -149,7 +159,10 @@ class Unit(object):
     def startMinute(self) -> int:
         """
         Return the startMinute.
-        rtype: int
+
+        :returns: The Minute only portion of startTime which is stored in
+        _startMinute
+        :rtype: int
         """
         return int(self._startMinute)
 
@@ -157,7 +170,9 @@ class Unit(object):
     def endTime(self) -> str:
         """
         Return the endTime of the lesson.
-        rtype: str
+
+        :returns: endTime which is stored in _endTime
+        :rtype: str
         """
         return self._endTime
 
@@ -165,7 +180,10 @@ class Unit(object):
     def endHour(self) -> int:
         """
         Return the endHour.
-        rtype: int
+
+        :returns: The Hour only portion of endTime which is stored in
+        _endHour
+        :rtype: int
         """
         return int(self._endHour)
 
@@ -173,15 +191,17 @@ class Unit(object):
     def endMinute(self) -> int:
         """
         Return the endMinute.
-        rtype: int
+        :returns: The Minute only portion of endTime which is stored in
+        _endMinute
+        :rtype: int
         """
         return int(self._endMinute)
 
     @property
     def hasComment(self) -> bool:
         """
-        Return True when comment is not None. Else return False
-        rtype: bool
+        :returns: True when comment is not None. Else return False
+        :rtype: bool
         """
         if self._comment is not None:
             return True
@@ -190,8 +210,8 @@ class Unit(object):
     @property
     def comment(self) -> str:
         """
-        Return any comments attached to the unit.
-        rtype: str
+        :returns: any comments attached to the unit.
+        :rtype: str
         """
         if self._comment is None:
             return ""
@@ -200,9 +220,11 @@ class Unit(object):
     @property
     def count(self) -> int:
         """
-        Return the number of Units covered from startTime to _endTime
+        Return the number of Units covered from startTime to endTime
         example: 07:00 ~ 07:40 -> 1 unit, 07:00 ~ 8:25 -> 2 units
-        rtype: int
+
+        :returns: The number of units that exist between startTime and endTime
+        :rtype: int
         """
         return self._count
 
@@ -210,7 +232,9 @@ class Unit(object):
     def countToStr(self) -> str:
         """
         Return the number of Units as a string.
-        rtype: str
+
+        :returns: count as a type str
+        :rtype: str
         """
         return str(self._count)
 
@@ -219,7 +243,9 @@ class Unit(object):
         """
         Return the string representation of the Unit object.
         ensure_ascii=False to preserve non ascii characters
-        rtype: str
+
+        :returns: A json string representation of the Unit object.
+        :rtype: str
         """
         return json.dumps(self.__dict__,ensure_ascii=False,indent=4)
 
@@ -256,11 +282,16 @@ class Student(Unit):
                    location=None):
         """
         Create a data populated instance of Student
-        param: startTime
-        param: endTime
-        param: location
-        param: comment
-        rtype: None
+
+        :param startTime:
+        :type startTime: str
+        :param endTime:
+        :type endTime: str
+        :param comment:
+        :type comment: str
+        :param location:
+        :type location: str
+        :rtype: None
         """
         # positional arguments; Do not Change
         super().createUnit(startTime,endTime,comment)
@@ -280,7 +311,8 @@ class Student(Unit):
     def location(self) -> str:
         """
         Return the location of the lesson.
-        rtype: str
+
+        :rtype: str
         """
         if self._location is None:
             return ""
@@ -326,14 +358,21 @@ class Instructor(Student):
                    location=None, material=None, type=None,
                    bonus=False) -> None:
         """
-        param: startTime
-        param: endTime
-        param: count
-        param: location
-        param: material
-        param: type
-        param: bonus
-        rtype: None
+        :param startTime:
+        :type startTime: str
+        :param endTime:
+        :type endTime: str
+        :param comment:
+        :type comment: str
+        :param location:
+        :type location: str
+        :param material:
+        :type material: str
+        :param type:
+        :type type: str
+        :param bonus:
+        :type bonus: bool
+        :rtype: None
         """
         # NOTE: Super().createUnit is using positional Params below
         super().createUnit(startTime,endTime,comment,location)
@@ -346,7 +385,8 @@ class Instructor(Student):
         """
         Valiate that _type is not None when _bonus is True
         Raise TypeBonusInstructorError if this case is not True
-        rtype: None
+
+        :rtype: None
         """
         if self._type is None and self._bonus:
             raise UnitExcpt.TypeBonusInstructorError()
@@ -355,7 +395,8 @@ class Instructor(Student):
     def hasMaterial(self) -> bool:
         """
         Return True when material is not None. Else return False
-        rtype: bool
+
+        :rtype: bool
         """
         if self._material is not None:
             return True
@@ -365,7 +406,8 @@ class Instructor(Student):
     def material(self) -> str:
         """
         Return the type of class material.
-        rtype: str
+
+        :rtype: str
         """
         if self._material is None:
             return ""
@@ -375,7 +417,8 @@ class Instructor(Student):
     def hasType(self) -> bool:
         """
         Return True when type is not None. Else return False
-        rtype: bool
+
+        :rtype: bool
         """
         if self._type is not None:
             return True
@@ -386,7 +429,9 @@ class Instructor(Student):
         """
         Return the lesson type.
         Appends " - Bonus" if _bonus is True
-        rtype: str
+
+        :returns: An updated str for type if bonus is True
+        :rtype: str
         """
         if not self._bonus:
             if self._type is None:
@@ -399,6 +444,7 @@ class Instructor(Student):
     def isBonus(self) -> bool:
         """
         Return bonus which is either True or False
-        rtype: bool
+        
+        :rtype: bool
         """
         return self._bonus
