@@ -4,13 +4,12 @@ import re
 
 from . import unit
 
-# Possble Name Change to unitsondate
-
 class DailyUnits(object):
-    """DailyUnits object will contain a list of units which take place on
+    """
+    DailyUnits object will contain a list of units which take place on
     this day.
 
-    This will provate year,month, date and then a list of units with their
+    This will provide year, month, date and then a list of units with their
     startTime and endTime
 
     """
@@ -54,7 +53,8 @@ class DailyUnits(object):
     def date(self) -> int:
         """
         Return the date, Day date only.
-        rtype: Int
+
+        :rtype: Int
         """
         return self._date
 
@@ -64,9 +64,12 @@ class DailyUnits(object):
         Set the date value.
         Checks that the input is of type int and raises TypeError if not int
         Checks that the value is in the range 1 to 31 as a minimum test.
-
         Raises a valueError is not in range.
-        rtype: None
+
+        :param value: Acceptable values are between 1 and 31 inclusive.
+        :type value: int
+
+        :rtype: None
         """
         self.__type(value)
         if ((value < 1) or (value > 31)):
@@ -77,7 +80,8 @@ class DailyUnits(object):
     def month(self) -> int:
         """
         Return the month.
-        rtype: Int
+
+        :rtype: int
         """
         return self._month
 
@@ -87,9 +91,11 @@ class DailyUnits(object):
         Set the month value.
         Checks that the input is of type int and raises TypeError if not int
         Checks that the value is in the range 1 to 12 as a minimum test.
-
         Raises a valueError is not in range.
-        rtype: None
+
+        :param value: Acceptable values are between 1 and 12 inclusive.
+        :type value: int
+        :rtype: None
         """
         self.__type(value)
         if ((value < 1) or (value > 12)):
@@ -100,7 +106,8 @@ class DailyUnits(object):
     def year(self) -> int:
         """
         Return the year of lessons.
-        rtype: Int
+
+        :rtype: int
         """
         return self._year
 
@@ -111,10 +118,15 @@ class DailyUnits(object):
         Checks that the input is in the string format of four digits
         Raises a TypeError if not int
         Raises a valueError if it does not match the four digit string
-        rtype: None
+
+        :param value: A four digit number to represent year
+        :type value: int
+        :rtype: None
         """
         self.__type(value)
+        # This could probably more simply be tested by checking 1000 ~ 9999
         pattern = re.compile(r'''\d{4}''')
+        # convert digits to a str before checking.
         match = pattern.match(str(value))
         if not match:
             raise ValueError("Must be four digits.")
@@ -124,7 +136,8 @@ class DailyUnits(object):
     def dateToStr(self) -> str:
         """
         Return date as a str
-        rtype: str
+
+        :rtype: str
         """
         return str(self._date)
 
@@ -132,7 +145,8 @@ class DailyUnits(object):
     def monthToStr(self) -> str:
         """
         Retrun month as str
-        type: str
+
+        :type: str
         """
         return str(self._month)
 
@@ -140,7 +154,8 @@ class DailyUnits(object):
     def yearToStr(self) -> str:
         """
         Return year as str
-        rtype: str
+
+        :rtype: str
         """
         return str(self._year)
 
@@ -148,7 +163,8 @@ class DailyUnits(object):
     def numberOfUnits(self) -> int:
         """
         Return the number of units for the day
-        rtype: int
+
+        :rtype: int
         """
         return self._numOfUnits
 
@@ -156,7 +172,10 @@ class DailyUnits(object):
         """
         Append unit.Unit object to DailyUnits.units[]
         Raises a TypeError if object is not an instance of unit.Unit
-        rtype: None
+
+        :param thisunit: A unit.Unit, unit.Student or unit.Instructor object
+        :type thisunit: unit.Unit
+        :rtype: None
         """
         if isinstance(thisunit, unit.Unit):
             self._units.append(thisunit)
@@ -168,7 +187,8 @@ class DailyUnits(object):
     def units(self) -> list:
         """
         Return a list of events that take place on the day.
-        rtype: list
+
+        :rtype: list
         """
         if self.numberOfUnits is 0:
             raise TypeError("No Units. List can not be created.")
@@ -179,7 +199,8 @@ class DailyUnits(object):
         """
         code taken from:
         https://medium.com/@yzhong.cs/serialize-and-deserialize-complex-json-in-python-205ecc636caa
-        rtype: str
+
+        :rtype: str
         """
-        return json.dumps(self.__dict__,default=lambda o: o.__dict__,
-                          ensure_ascii=False,indent=4)
+        return json.dumps(self.__dict__, default=lambda o: o.__dict__,
+                          ensure_ascii=False, indent=4)
