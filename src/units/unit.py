@@ -1,12 +1,13 @@
+"""unit module for dealing with units"""
 
-from .constants import validStartTimes, validEndTimes, timePattern
-from . import exceptions as UnitExcpt
 import re
 import json
+from .constants import validStartTimes, validEndTimes, timePattern
+from . import exceptions as UnitExcpt
 
     # TODO: Consider making a base class Unit with minimal required
     # attributes and then create subclass objects for students and instructors
-class Unit(object):
+class Unit():
     """
     Create a base unit object.
 
@@ -14,7 +15,7 @@ class Unit(object):
     It will provide details such as startTime, endTime and comment.
     This will allow additional types of units to be derived
     """
-
+    # pylint: disable=too-many-instance-attributes
     def __init__(self):
         self._startTime = None
         self._endTime = None
@@ -82,11 +83,11 @@ class Unit(object):
         """
         # TODO: Add index range to speed up index() check
         unitCount = ((validEndTimes.index(self._endTime) -
-            validStartTimes.index(self._startTime)) + 1)
+                      validStartTimes.index(self._startTime)) + 1)
         if unitCount <= self._count:
-                raise UnitExcpt.UnitCountInvalidStartEndTimeError(
-                    "self._endTime: {} is before self.startTime {}".format(
-                        self._endTime, self.startTime))
+            raise UnitExcpt.UnitCountInvalidStartEndTimeError(
+                "self._endTime: {} is before self.startTime {}".format(
+                    self._endTime, self.startTime))
         else:
             self._count = unitCount
 
@@ -121,8 +122,7 @@ class Unit(object):
         """
         if self._endTime is None:
             raise UnitExcpt.UnitInvalidEndTimeError(
-                            "endTime is None. Must be 'HH:MM'"
-                            )
+                "endTime is None. Must be 'HH:MM'")
         else:
             pattern = re.compile(timePattern)
             match = pattern.match(self._endTime)
@@ -247,7 +247,7 @@ class Unit(object):
         :returns: A json string representation of the Unit object.
         :rtype: str
         """
-        return json.dumps(self.__dict__,ensure_ascii=False,indent=4)
+        return json.dumps(self.__dict__, ensure_ascii=False, indent=4)
 
 
 class Student(Unit):
@@ -294,7 +294,7 @@ class Student(Unit):
         :rtype: None
         """
         # positional arguments; Do not Change
-        super().createUnit(startTime,endTime,comment)
+        super().createUnit(startTime, endTime, comment)
         self._location = location
 
     @property
@@ -354,7 +354,7 @@ class Instructor(Student):
             f"Bonus: {self._bonus}"
         )
 
-    def createUnit(self, startTime=None,endTime=None,comment=None,
+    def createUnit(self, startTime=None, endTime=None, comment=None,
                    location=None, material=None, type=None,
                    bonus=False) -> None:
         """
@@ -375,7 +375,7 @@ class Instructor(Student):
         :rtype: None
         """
         # NOTE: Super().createUnit is using positional Params below
-        super().createUnit(startTime,endTime,comment,location)
+        super().createUnit(startTime, endTime, comment, location)
         self._material = material
         self._type = type
         self._bonus = bonus
