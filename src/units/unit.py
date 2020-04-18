@@ -149,8 +149,7 @@ class Unit(object):
         """
         Return the startHour.
 
-        :returns: The Hour only portion of startTime which is stored in
-        _startHour
+        :returns: The Hour only portion of startTime which is stored in _startHour
         :rtype: int
         """
         return int(self._startHour)
@@ -160,8 +159,7 @@ class Unit(object):
         """
         Return the startMinute.
 
-        :returns: The Minute only portion of startTime which is stored in
-        _startMinute
+        :returns: The Minute only portion of startTime which is stored in _startMinute
         :rtype: int
         """
         return int(self._startMinute)
@@ -181,8 +179,7 @@ class Unit(object):
         """
         Return the endHour.
 
-        :returns: The Hour only portion of endTime which is stored in
-        _endHour
+        :returns: The Hour only portion of endTime which is stored in _endHour
         :rtype: int
         """
         return int(self._endHour)
@@ -191,8 +188,7 @@ class Unit(object):
     def endMinute(self) -> int:
         """
         Return the endMinute.
-        :returns: The Minute only portion of endTime which is stored in
-        _endMinute
+        :returns: The Minute only portion of endTime which is stored in _endMinute
         :rtype: int
         """
         return int(self._endMinute)
@@ -444,7 +440,7 @@ class Instructor(Student):
     def isBonus(self) -> bool:
         """
         Return bonus which is either True or False
-        
+
         :rtype: bool
         """
         return self._bonus
