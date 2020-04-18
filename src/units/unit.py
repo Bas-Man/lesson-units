@@ -5,8 +5,6 @@ import json
 from .constants import validStartTimes, validEndTimes, timePattern
 from . import exceptions as UnitExcpt
 
-    # TODO: Consider making a base class Unit with minimal required
-    # attributes and then create subclass objects for students and instructors
 class Unit():
     """
     Create a base unit object.
@@ -51,8 +49,7 @@ class Unit():
         """
         if self._count > 1 or self._count == 0:
             return "s"
-        else:
-            return ""
+        return ""
 
     def createUnit(self, startTime=None, endTime=None, comment=None) -> None:
         """
@@ -88,8 +85,8 @@ class Unit():
             raise UnitExcpt.UnitCountInvalidStartEndTimeError(
                 "self._endTime: {} is before self.startTime {}".format(
                     self._endTime, self.startTime))
-        else:
-            self._count = unitCount
+        # No issue. return _count
+        self._count = unitCount
 
     def __startTimeIsValid(self) -> None:
         """
@@ -99,12 +96,13 @@ class Unit():
         if self._startTime is None:
             raise UnitExcpt.UnitInvalidStartTimeError(
                 "startTime is None. Must be 'HH:MM'")
-        else:
-            pattern = re.compile(timePattern)
-            match = pattern.match(self._startTime)
-            if not match:
-                raise UnitExcpt.UnitInvalidStartTimeError(
-                    "Format Error startTime does not conform to 'HH:MM'")
+        # no exception. Do match
+        pattern = re.compile(timePattern)
+        match = pattern.match(self._startTime)
+        if not match:
+            raise UnitExcpt.UnitInvalidStartTimeError(
+                "Format Error startTime does not conform to 'HH:MM'")
+
         if self._startTime not in validStartTimes:
             raise UnitExcpt.UnitInvalidStartTimeError
 
@@ -123,12 +121,12 @@ class Unit():
         if self._endTime is None:
             raise UnitExcpt.UnitInvalidEndTimeError(
                 "endTime is None. Must be 'HH:MM'")
-        else:
-            pattern = re.compile(timePattern)
-            match = pattern.match(self._endTime)
-            if not match:
-                raise UnitExcpt.UnitInvalidEndTimeError(
-                    "Format Error endTime does not conform to 'HH:MM'")
+        # No Exception. Do match.
+        pattern = re.compile(timePattern)
+        match = pattern.match(self._endTime)
+        if not match:
+            raise UnitExcpt.UnitInvalidEndTimeError(
+                "Format Error endTime does not conform to 'HH:MM'")
         if self._endTime not in validEndTimes:
             raise UnitExcpt.UnitInvalidEndTimeError()
 
@@ -354,6 +352,7 @@ class Instructor(Student):
             f"Bonus: {self._bonus}"
         )
 
+    #pylint: disable=too-many-arguments
     def createUnit(self, startTime=None, endTime=None, comment=None,
                    location=None, material=None, type=None,
                    bonus=False) -> None:
@@ -437,8 +436,8 @@ class Instructor(Student):
             if self._type is None:
                 return ""
             return self._type
-        else:
-            return f'{self._type} - Bonus'
+        # Bonus is true and type is not None
+        return f'{self._type} - Bonus'
 
     @property
     def isBonus(self) -> bool:
