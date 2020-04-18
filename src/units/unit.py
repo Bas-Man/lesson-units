@@ -18,6 +18,10 @@ class Unit(object):
     def __init__(self):
         self._startTime = None
         self._endTime = None
+        self._startHour = None
+        self._startMinute = None
+        self._endHour = None
+        self._endMinute = None
         self._count = 0 # Internally calculated.
         self._comment = None
 
@@ -29,7 +33,7 @@ class Unit(object):
             f"'_count:' = {self._count},\n\t"
             f"'_comment:' = {self._comment}"
             f">"
-            )
+                )
 
     def __str__(self): # pragma: no cover
         return (

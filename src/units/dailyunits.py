@@ -4,7 +4,7 @@ import re
 
 from . import unit
 
-class DailyUnits(object):
+class DailyUnits():
     """
     DailyUnits object will contain a list of units which take place on
     this day.
@@ -14,7 +14,7 @@ class DailyUnits(object):
 
     """
 
-    def __init__(self,year=None,month=None,date=None) -> None:
+    def __init__(self, year=None, month=None, date=None) -> None:
         self._year = year
         self._month = month
         self._date = date
@@ -33,11 +33,11 @@ class DailyUnits(object):
         rtype: None
         """
         if ((self._date is None) or (self._month is None) or
-            (self._year is None)):
+                (self._year is None)):
             raise ValueError("date, month or year not set.")
         try:
             # Attempt to create a valid datetime object using passed params
-            dt.date(year=self._year,month=self._month,day=self._date)
+            dt.date(year=self._year, month=self._month, day=self._date)
             self._valid = True
         except ValueError as e:
             print(e)
@@ -46,7 +46,7 @@ class DailyUnits(object):
         """
         Raise TypeError if param is not of type int
         """
-        if type(value) is not int:
+        if not isinstance(value, int):
             raise TypeError("Not Integer")
 
     @property
@@ -190,7 +190,7 @@ class DailyUnits(object):
 
         :rtype: list
         """
-        if self.numberOfUnits is 0:
+        if self.numberOfUnits == 0:
             raise TypeError("No Units. List can not be created.")
         return self._units
 

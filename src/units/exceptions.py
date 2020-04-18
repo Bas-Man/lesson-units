@@ -1,8 +1,9 @@
-# Custom Exceptions for more detailed and specific Errors
+""" Custom Exceptions for more detailed and specific Errors """
 
 class UnitExceptions(Exception):
     """Base Class exceptions for Unit."""
     def __init__(self, msg):
+        super().__init__()
         self.msg = msg
 
     def __str__(self):
@@ -26,7 +27,7 @@ class UnitInvalidEndTimeError(UnitExceptions):
 
 class InstructorError(UnitExceptions):
     """Base Class exception for unit.Instructor"""
-    def __init__(self,msg="Error in unit.Instructor"):
+    def __init__(self, msg="Error in unit.Instructor"):
         super().__init__(msg)
 
 class TypeBonusInstructorError(InstructorError):
