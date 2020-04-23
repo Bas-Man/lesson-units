@@ -44,7 +44,7 @@ class UnitTests(unittest.TestCase):
         self.assertEqual(str(e.exception),
                          "Format Error endTime does not conform to 'HH:MM'")
 
-    def testObectTypeNoneCountIsZero(self):
+    def testObjectTypeNoneCountIsZero(self):
         self.obj.createUnit(startTime="07:00", endTime="07:40",
                             location="Akasaka")
         self.assertIsNone(self.obj._comment)

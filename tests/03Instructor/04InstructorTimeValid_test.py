@@ -18,12 +18,12 @@ class UnitTimesTests(unittest.TestCase):
         self.assertEqual(self.obj.location,"Otemachi")
 
     def testObjectType(self):
-        self.obj.createUnit(startTime="07:00", endTime="07:40",type="Private")
+        self.obj.createUnit(startTime="07:00", endTime="07:40",lType="Private")
         self.assertFalse(self.obj._bonus)
         self.assertEqual(self.obj.type,"Private")
 
     def testObjectTypeBonus(self):
-        self.obj.createUnit(startTime="07:00", endTime="07:40",type="Private",
+        self.obj.createUnit(startTime="07:00", endTime="07:40",lType="Private",
                             bonus=True)
         self.assertTrue(self.obj._bonus)
         self.assertTrue(self.obj.isBonus)

@@ -354,7 +354,7 @@ class Instructor(Student):
 
     #pylint: disable=too-many-arguments
     def createUnit(self, startTime=None, endTime=None, comment=None,
-                   location=None, material=None, type=None,
+                   location=None, material=None, lType=None,
                    bonus=False) -> None:
         """
         :param startTime:
@@ -367,8 +367,8 @@ class Instructor(Student):
         :type location: str
         :param material:
         :type material: str
-        :param type:
-        :type type: str
+        :param lType: Lesson Type or Work type default Private
+        :type lType: str
         :param bonus:
         :type bonus: bool
         :rtype: None
@@ -376,7 +376,7 @@ class Instructor(Student):
         # NOTE: Super().createUnit is using positional Params below
         super().createUnit(startTime, endTime, comment, location)
         self._material = material
-        self._type = type
+        self._type = lType
         self._bonus = bonus
         self.__valiateTypeBonus()
 

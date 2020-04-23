@@ -28,6 +28,6 @@ class UnitTests(unittest.TestCase):
         self.assertIsNone(self.unit._type)
 
     def testObjectType(self):
-        self.unit.createUnit(startTime="08:30",endTime="09:10", type="Private")
+        self.unit.createUnit(startTime="08:30",endTime="09:10", lType="Private")
         self.assertTrue(self.unit.hasType)
         self.assertEqual(self.unit.type,"Private")
