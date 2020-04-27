@@ -2,7 +2,7 @@
 
 import re
 import json
-from .constants import validStartTimes, validEndTimes, timePattern
+from .constants import validStartTimes, validEndTimes, timePattern, LESSON_LENGTH
 from . import exceptions as UnitExcpt
 
 class Unit():
@@ -47,7 +47,7 @@ class Unit():
         units is greater than 1
         :rtype: int
         """
-        return self._count * 40
+        return self._count * LESSON_LENGTH
 
     def __plural(self) -> str: # pragma: no cover
         """
