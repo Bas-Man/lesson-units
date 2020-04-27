@@ -41,6 +41,14 @@ class Unit():
             f"Comments: {self.comment}"
             )
 
+    def __len__(self): # pragma: no cover
+        """
+        Return the total lesson time. No counting break time between units if
+        units is greater than 1
+        :rtype: int
+        """
+        return self._count * 40
+
     def __plural(self) -> str: # pragma: no cover
         """
         Helper method append 's' if counter is zero more greater than 1
@@ -247,6 +255,13 @@ class Unit():
         """
         return json.dumps(self.__dict__, ensure_ascii=False, indent=4)
 
+    @property
+    def duration(self) -> int:
+        """
+        Returns the total amount of time in minutes for the unit.
+        :rtype: int
+        """
+        return len(self)
 
 class Student(Unit):
     """
