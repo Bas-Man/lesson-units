@@ -14,4 +14,5 @@ class UnitTests(unittest.TestCase):
         self.assertEqual(self.unit.endTime,"07:40")
         self.assertEqual(self.unit.comment,"")
         self.assertEqual(self.unit.count,1)
+        self.assertEqual(self.unit.duration,40)
         self.assertEqual(self.unit.countToStr,"1")

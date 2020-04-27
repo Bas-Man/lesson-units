@@ -36,3 +36,4 @@ class UnitTests(unittest.TestCase):
         self.assertIsNone(self.obj._comment)
         self.assertFalse(self.obj.hasComment)
         self.assertIs(self.obj._count,1)
+        self.assertEqual(self.obj.duration,40)

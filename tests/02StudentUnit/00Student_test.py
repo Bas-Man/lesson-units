@@ -45,4 +45,5 @@ class UnitTests(unittest.TestCase):
         self.assertTrue(self.obj.hasLocation)
         self.assertIsNone(self.obj._comment)
         self.assertIs(self.obj._count,1)
+        self.assertEqual(self.obj.duration,40)
         self.assertEqual(self.obj._location,"Akasaka")

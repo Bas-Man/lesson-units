@@ -11,6 +11,7 @@ class UnitTests(unittest.TestCase):
 
     def testObjectCountisValid(self):
         self.obj.createUnit(startTime="10:00", endTime="12:55")
+        self.assertEqual(self.obj.duration,160)
         self.assertEqual(self.obj.count,4)
 
     def testObjectStartTime(self):
