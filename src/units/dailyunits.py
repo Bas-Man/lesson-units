@@ -42,7 +42,8 @@ class DailyUnits():
         except ValueError as e:
             print(e)
 
-    def __type(self, value) -> None:
+    @staticmethod
+    def __type(value) -> None:
         """
         Raise TypeError if param is not of type int
         """
