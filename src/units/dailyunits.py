@@ -43,7 +43,7 @@ class DailyUnits():
             print(e)
 
     @staticmethod
-    def __type(value) -> None:
+    def __typeIsInt(value) -> None:
         """
         Raise TypeError if param is not of type int
         """
@@ -72,7 +72,7 @@ class DailyUnits():
 
         :rtype: None
         """
-        self.__type(value)
+        self.__typeIsInt(value)
         if ((value < 1) or (value > 31)):
             raise ValueError("Not within range 1 ~ 31")
         self._date = value
@@ -98,7 +98,7 @@ class DailyUnits():
         :type value: int
         :rtype: None
         """
-        self.__type(value)
+        self.__typeIsInt(value)
         if ((value < 1) or (value > 12)):
             raise ValueError("Not within range 1 ~ 12")
         self._month = value
@@ -124,7 +124,7 @@ class DailyUnits():
         :type value: int
         :rtype: None
         """
-        self.__type(value)
+        self.__typeIsInt(value)
         # This could probably more simply be tested by checking 1000 ~ 9999
         pattern = re.compile(r'''\d{4}''')
         # convert digits to a str before checking.
