@@ -258,7 +258,7 @@ class Unit():
     @property
     def duration(self) -> int:
         """
-        Returns the total amount of time in minutes for the unit.
+        :returns: Returns the total amount of time in minutes for the unit.
         :rtype: int
         """
         return len(self)
@@ -296,13 +296,13 @@ class Student(Unit):
         """
         Create a data populated instance of Student
 
-        :param startTime:
+        :param startTime: The time the lesson will commence.
         :type startTime: str
-        :param endTime:
+        :param endTime: The time the lesson will end.
         :type endTime: str
-        :param comment:
+        :param comment: Any comments provided.
         :type comment: str
-        :param location:
+        :param location: Location of the lesson, LC name or Outservice or other.
         :type location: str
         :rtype: None
         """
@@ -313,8 +313,9 @@ class Student(Unit):
     @property
     def hasLocation(self) -> bool:
         """
-        Return True when location is not None. Else return False
-        rtype: bool
+        :returns: True when location is not None. Else return False
+        :rtype: bool
+
         """
         if self._location is not None:
             return True
@@ -323,8 +324,7 @@ class Student(Unit):
     @property
     def location(self) -> str:
         """
-        Return the location of the lesson.
-
+        :returns: The location of the lesson.
         :rtype: str
         """
         if self._location is None:
@@ -398,8 +398,7 @@ class Instructor(Student):
     def __valiateTypeBonus(self) -> None:
         """
         Valiate that _type is not None when _bonus is True
-        Raise TypeBonusInstructorError if this case is not True
-
+        :raises: TypeBonusInstructorError if this case is not True
         :rtype: None
         """
         if self._type is None and self._bonus:
@@ -408,8 +407,7 @@ class Instructor(Student):
     @property
     def hasMaterial(self) -> bool:
         """
-        Return True when material is not None. Else return False
-
+        :returns: True when material is not None. Else return False
         :rtype: bool
         """
         if self._material is not None:
@@ -419,8 +417,7 @@ class Instructor(Student):
     @property
     def material(self) -> str:
         """
-        Return the type of class material.
-
+        :returns: The type of class material.
         :rtype: str
         """
         if self._material is None:
@@ -430,8 +427,7 @@ class Instructor(Student):
     @property
     def hasType(self) -> bool:
         """
-        Return True when type is not None. Else return False
-
+        returns: True when type is not None. Else return False
         :rtype: bool
         """
         if self._type is not None:
@@ -441,7 +437,6 @@ class Instructor(Student):
     @property
     def type(self) ->str:
         """
-        Return the lesson type.
         Appends " - Bonus" if _bonus is True
 
         :returns: An updated str for type if bonus is True
@@ -457,8 +452,7 @@ class Instructor(Student):
     @property
     def isBonus(self) -> bool:
         """
-        Return bonus which is either True or False
-
+        :returns: True or False
         :rtype: bool
         """
         return self._bonus

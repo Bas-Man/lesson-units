@@ -14,5 +14,6 @@ add code and exceptions for checking string input on:
 - comment
 - type
 - location (optional?)
+- Change startTime and endTime to use datetime.time objects.
 
 Consider adding "link" property to unit.Unit or Student?
