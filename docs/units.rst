@@ -4,26 +4,10 @@ units package
 Submodules
 ----------
 
-units.constants module
-----------------------
+Module contents
+---------------
 
-.. automodule:: units.constants
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-units.dailyunits module
------------------------
-
-.. automodule:: units.dailyunits
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-units.exceptions module
------------------------
-
-.. automodule:: units.exceptions
+.. automodule:: units
    :members:
    :undoc-members:
    :show-inheritance:
@@ -36,11 +20,27 @@ units.unit module
    :undoc-members:
    :show-inheritance:
 
+units.dailyunits module
+-----------------------
 
-Module contents
----------------
-
-.. automodule:: units
+.. automodule:: units.dailyunits
    :members:
    :undoc-members:
    :show-inheritance:
+
+units.constants module
+----------------------
+
+.. automodule:: units.constants
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+units.exceptions module
+-----------------------
+
+.. automodule:: units.exceptions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
