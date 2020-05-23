@@ -1,9 +1,6 @@
 units package
 =============
 
-Submodules
-----------
-
 Module contents
 ---------------
 
@@ -11,6 +8,9 @@ Module contents
    :members:
    :undoc-members:
    :show-inheritance:
+
+Submodules
+----------
 
 units.unit module
 -----------------
