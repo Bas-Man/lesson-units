@@ -413,7 +413,7 @@ class Instructor(Student):
     @property
     def hasType(self) -> bool:
         """
-        returns: True when type is not None. Else return False
+        :returns: True when type is not None. Else return False
         :rtype: bool
         """
         if self._type is not None:
