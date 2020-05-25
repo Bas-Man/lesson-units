@@ -9,7 +9,7 @@ class Unit():
     """
     Create a base unit object.
 
-    This will store minimal information for a given Unit.
+    This will store minimal information for a given unit.
     It will provide details such as startTime, endTime and comment.
     This will allow additional types of units to be derived
     """
@@ -43,7 +43,7 @@ class Unit():
 
     def __len__(self): # pragma: no cover
         """
-        Return the total lesson time. No counting break time between units if
+        Return the total lesson time. Not counting break time between units if
         units is greater than 1
         :rtype: int
         """
@@ -63,13 +63,12 @@ class Unit():
         """
         This is the Base Unit Class. Other units can be derivded from this.
 
-        :param startTime:
+        :param startTime: Start time for the unit.
         :type startTime: str
-        :param endTime:
+        :param endTime: End Time for the unit.
         :type endTime: str
-        :param count:
-        :type count: int
-        :returns: A object of class Unit
+        :param comment: Any comments provided for the unit.
+        :type comment: str
         :rtype: None
         """
         self._startTime = startTime
@@ -82,7 +81,7 @@ class Unit():
 
     def __countIsValid(self) -> None:
         """
-        Raise ValueError if count equals Zero or count does not match time
+        :raises: ValueError if count equals Zero or count does not match time
         difference
         rtype: None
         """
@@ -98,8 +97,8 @@ class Unit():
 
     def __startTimeIsValid(self) -> None:
         """
-        Raise a UnitInvalidStartTimeError if the format is not valid
-        rtype: None
+        :raises: UnitInvalidStartTimeError if the format is not valid
+        :rtype: None
         """
         if self._startTime is None:
             raise UnitExcpt.UnitInvalidStartTimeError(
@@ -122,9 +121,9 @@ class Unit():
 
     def __endTimeIsValid(self) -> None:
         """
-        Return true or false if the endTime is valid.
-        Raise a UnitInvalidEndTimeError if the format is not valid
-        rtype: None
+        :raises: UnitInvalidEndTimeError if the format is not valid
+        :returns: true or false if the endTime is valid.
+        :rtype: None
         """
         if self._endTime is None:
             raise UnitExcpt.UnitInvalidEndTimeError(
@@ -147,8 +146,6 @@ class Unit():
     @property
     def startTime(self) -> str:
         """
-        Return the startTime of the lesson.
-
         :returns: The string stored in _startTime
         :rtype:  str
         """
@@ -157,8 +154,6 @@ class Unit():
     @property
     def startHour(self) -> int:
         """
-        Return the startHour.
-
         :returns: The Hour only portion of startTime which is stored in _startHour
         :rtype: int
         """
@@ -167,8 +162,6 @@ class Unit():
     @property
     def startMinute(self) -> int:
         """
-        Return the startMinute.
-
         :returns: The Minute only portion of startTime which is stored in _startMinute
         :rtype: int
         """
@@ -177,8 +170,6 @@ class Unit():
     @property
     def endTime(self) -> str:
         """
-        Return the endTime of the lesson.
-
         :returns: endTime which is stored in _endTime
         :rtype: str
         """
@@ -187,8 +178,6 @@ class Unit():
     @property
     def endHour(self) -> int:
         """
-        Return the endHour.
-
         :returns: The Hour only portion of endTime which is stored in _endHour
         :rtype: int
         """
@@ -197,7 +186,6 @@ class Unit():
     @property
     def endMinute(self) -> int:
         """
-        Return the endMinute.
         :returns: The Minute only portion of endTime which is stored in _endMinute
         :rtype: int
         """
@@ -237,8 +225,6 @@ class Unit():
     @property
     def countToStr(self) -> str:
         """
-        Return the number of Units as a string.
-
         :returns: count as a type str
         :rtype: str
         """
@@ -265,7 +251,7 @@ class Unit():
 
 class Student(Unit):
     """
-    This is the Student Unit Class derivded from Unit.
+    This is the Student Unit Class derived from Unit.
 
     This will store the information for a given Student's Unit.
     It inherits, 'startTime', 'endTime' and 'comment'. It adds 'location' as
@@ -333,7 +319,7 @@ class Student(Unit):
 
 class Instructor(Student):
     """
-    This is the Instructor Unit Class derivded from Student.
+    This is the Instructor Unit Class derived from Student.
 
     This will store the information for a given Instructor's Unit.
     It inherits, 'startTime', 'endTime', 'comment', 'location'.

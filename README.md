@@ -17,3 +17,4 @@ add code and exceptions for checking string input on:
 - Change startTime and endTime to use datetime.time objects.
 
 Consider adding "link" property to unit.Unit or Student?
+Consider changin times and dates to use datetime.time objects.
