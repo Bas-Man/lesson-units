@@ -28,8 +28,8 @@ class DailyUnits():
         """
         Validate that the date object created with the passed params is a
         date that exists. Handles leap year dates using datetime package
-        rasies ValueError if any param is None.
-        raises ValueError if datetime.date raises Error
+        :raises: ValueError if any param is None.
+        :raises: ValueError if datetime.date raises Error
         rtype: None
         """
         if ((self._date is None) or (self._month is None) or
@@ -45,7 +45,8 @@ class DailyUnits():
     @staticmethod
     def __typeIsInt(value) -> None:
         """
-        Raise TypeError if param is not of type int
+        :raises: TypeError if param is not of type int
+        :rtype: None
         """
         if not isinstance(value, int):
             raise TypeError("Not Integer")
@@ -53,9 +54,8 @@ class DailyUnits():
     @property
     def date(self) -> int:
         """
-        Return the date, Day date only.
-
-        :rtype: Int
+        :returns: The date, Day date only.
+        :rtype: int
         """
         return self._date
 
@@ -65,11 +65,10 @@ class DailyUnits():
         Set the date value.
         Checks that the input is of type int and raises TypeError if not int
         Checks that the value is in the range 1 to 31 as a minimum test.
-        Raises a valueError is not in range.
 
+        :raises: a valueError is not in range.
         :param value: Acceptable values are between 1 and 31 inclusive.
         :type value: int
-
         :rtype: None
         """
         self.__typeIsInt(value)
@@ -80,8 +79,7 @@ class DailyUnits():
     @property
     def month(self) -> int:
         """
-        Return the month.
-
+        :returns: The month.
         :rtype: int
         """
         return self._month
@@ -92,10 +90,10 @@ class DailyUnits():
         Set the month value.
         Checks that the input is of type int and raises TypeError if not int
         Checks that the value is in the range 1 to 12 as a minimum test.
-        Raises a valueError is not in range.
 
         :param value: Acceptable values are between 1 and 12 inclusive.
         :type value: int
+        :raises: ValueError is not in range.
         :rtype: None
         """
         self.__typeIsInt(value)
@@ -106,8 +104,7 @@ class DailyUnits():
     @property
     def year(self) -> int:
         """
-        Return the year of lessons.
-
+        :returns: The year of lessons.
         :rtype: int
         """
         return self._year
@@ -117,11 +114,11 @@ class DailyUnits():
         """
         Set the year value.
         Checks that the input is in the string format of four digits
-        Raises a TypeError if not int
-        Raises a valueError if it does not match the four digit string
 
         :param value: A four digit number to represent year
         :type value: int
+        :raises: a TypeError if not int
+        :raises: a ValueError if it does not match the four digit string
         :rtype: None
         """
         self.__typeIsInt(value)
@@ -136,7 +133,7 @@ class DailyUnits():
     @property
     def dateToStr(self) -> str:
         """
-        Return date as a str
+        :returns: Date as a str
 
         :rtype: str
         """
@@ -145,8 +142,7 @@ class DailyUnits():
     @property
     def monthToStr(self) -> str:
         """
-        Retrun month as str
-
+        :returns: Month as str
         :type: str
         """
         return str(self._month)
@@ -154,8 +150,7 @@ class DailyUnits():
     @property
     def yearToStr(self) -> str:
         """
-        Return year as str
-
+        :returns: year
         :rtype: str
         """
         return str(self._year)
@@ -163,8 +158,7 @@ class DailyUnits():
     @property
     def numberOfUnits(self) -> int:
         """
-        Return the number of units for the day
-
+        :returns: the number of units for the day
         :rtype: int
         """
         return self._numOfUnits
@@ -172,10 +166,10 @@ class DailyUnits():
     def appendUnit(self, thisunit) -> None:
         """
         Append unit.Unit object to DailyUnits.units[]
-        Raises a TypeError if object is not an instance of unit.Unit
 
         :param thisunit: A unit.Unit, unit.Student or unit.Instructor object
         :type thisunit: unit.Unit
+        :raises: TypeError if object is not an instance of unit.Unit
         :rtype: None
         """
         if isinstance(thisunit, unit.Unit):
@@ -187,8 +181,7 @@ class DailyUnits():
     @property
     def units(self) -> list:
         """
-        Return a list of events that take place on the day.
-
+        :returns: A list of events that take place on the day.
         :rtype: list
         """
         if self.numberOfUnits == 0:
